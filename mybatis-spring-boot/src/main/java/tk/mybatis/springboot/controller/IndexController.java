@@ -18,12 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * IndexController
- *
- * @author: yangch
- * @time: 2015/12/2 11:35
- */
+
 @Controller
 @RequestMapping(value = "/search")
 public class IndexController {

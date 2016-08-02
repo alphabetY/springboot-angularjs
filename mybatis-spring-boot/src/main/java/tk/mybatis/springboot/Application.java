@@ -20,10 +20,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import freemarker.template.utility.HtmlEscape;
 import freemarker.template.utility.XmlEscape;
 
-/**
- * @author liuzh
- * @since 2015-12-12 18:22
- */
+
 @Controller
 @EnableWebMvc
 @SpringBootApplication
