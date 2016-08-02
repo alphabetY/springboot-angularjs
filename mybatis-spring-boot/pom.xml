@@ -81,6 +81,26 @@
             <version>1.0.11</version>
         </dependency>
 
+        <!-- 1 -->
+        <dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 2 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- 5 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+
         <!--Mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -114,7 +134,7 @@
         </dependency>
 
 
- <!--Lucene-->
+       <!--Lucene-->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
