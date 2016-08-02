@@ -1,5 +1,5 @@
 package ask.springboot.conf;
-/*
+
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -62,4 +62,4 @@ public class HibernateConfiguration {
        return txManager;
     }
 }
-*/
+
