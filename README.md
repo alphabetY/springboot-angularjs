@@ -8,12 +8,12 @@ web service,
 websocket|Lucence|pdfbox|xstream|poi,
 ...
 #front
-Freemark|JSP，AngularjS|Metronic
+Freemark|JSP,AngularjS|Metronic
 ##说明
 ~~~~
 maven project
 
-sca soa ,web service。
+sca soa,web service
 
 just begin.
 
