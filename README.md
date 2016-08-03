@@ -4,6 +4,7 @@
 #druid &MyBatis3.3.0  | Hibernate&springboot JPA
 #缓存层
 #安全层springboot security
+#sso
 #消息层|代理|分布式服务层
 #websocket|Lucence|pdfbox|xstream|poi
 #Freemark|JSP，AngularjS|Metronic
