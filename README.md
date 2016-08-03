@@ -1,20 +1,24 @@
 
 #SOA
 
-back
-#Spring Boot 1.3.0.RELEASE
-#druid &MyBatis3.3.0  | Hibernate&springboot JPA
+<<<back>>>
+#Spring Boot 
+#druid &MyBatis | Hibernate&springboot JPA
 #cache
 #springboot security
 #sso
-#message | agent | web service
-#websocket|Lucence|pdfbox|xstream|poi 
+#web service
+#websocket|Lucence|pdfbox|xstream|poi
+...
 
-front
+<<<front>>>
 #Freemark|JSP，AngularjS|Metronic
 
 ##说明
 
 ~~~~
+maven project
 
+前端后端整合的SOA框架，提供分布式服务。
 
+just begin.
