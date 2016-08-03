@@ -1,11 +1,11 @@
 #back
-Spring Boot 
-druid &MyBatis | Hibernate&springboot JPA
-cache
-springboot security
-sso
-web service
-websocket|Lucence|pdfbox|xstream|poi
+Spring Boot, 
+druid &MyBatis | Hibernate&springboot JPA,
+cache,
+springboot security,
+sso,
+web service,
+websocket|Lucence|pdfbox|xstream|poi,
 ...
 #front
 Freemark|JSP，AngularjS|Metronic
