@@ -2,17 +2,26 @@
 
 #Spring Boot 1.3.0.RELEASE
 
-#MyBatis3.3.0
-#springboot JPA
+#druid &MyBatis3.3.0  | Hibernate&springboot JPA
 
+#安全层springboot security
+sso,oauth
+#缓存层
+
+#消息层
+
+#websocket
 
 #Lucence
 
 #Freemark
+#JSP
+
 
 #AngularjS
 
-#JSP
+#Metronic
+
 
 
 
