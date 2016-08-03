@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package tk.mybatis.springboot.model;
+package ask.springboot.model;
 
 /**
  * mybatis 3.3.1新功能测试使用

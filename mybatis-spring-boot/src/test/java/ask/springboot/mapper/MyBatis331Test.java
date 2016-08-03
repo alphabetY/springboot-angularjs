@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package tk.mybatis.springboot.mapper;
+package ask.springboot.mapper;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,7 +37,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import ask.springboot.Application;
-import tk.mybatis.springboot.model.City2;
+import ask.springboot.model.City2;
 
 import java.util.ArrayList;
 import java.util.List;

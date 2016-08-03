@@ -22,10 +22,11 @@
  * THE SOFTWARE.
  */
 
-package tk.mybatis.springboot.mapper;
+package ask.springboot.mapper;
 
 import org.apache.ibatis.annotations.*;
-import tk.mybatis.springboot.model.City2;
+
+import ask.springboot.model.City2;
 
 import java.util.List;
 
