@@ -1,10 +1,10 @@
 #back
 Spring Boot, 
-druid &MyBatis | Hibernate&springboot JPA,liquibase
+druid &MyBatis | Hibernate&springboot JPA,liquibase,
 cache,
 springboot security,
-sso,oauth
-web service,rest api
+sso,oauth,
+web service,rest api,
 websocket|Lucence|pdfbox|xstream|poi|kafka,
 ...
 #front
