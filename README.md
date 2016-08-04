@@ -5,7 +5,7 @@ cache,
 springboot security,
 sso,oauth
 web service,rest api
-websocket|Lucence|pdfbox|xstream|poi,
+websocket|Lucence|pdfbox|xstream|poi|kafka,
 ...
 #front
 Freemark|JSP,AngularjS|Metronic
