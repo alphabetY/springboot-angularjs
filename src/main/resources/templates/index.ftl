@@ -388,7 +388,7 @@
 
 
 
-<div class="middle"><h1>copyright:烟草科技信息中心    </h1></div>
+<div class="middle"><h1>copyright:信息中心    </h1>18392977827</div>
 
 
 
