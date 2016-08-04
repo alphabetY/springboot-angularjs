@@ -24,6 +24,8 @@
 
 package ask.springboot.conf;
 
+
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +37,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
@@ -51,16 +54,19 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        
+       
+       
     }
     
 
     public void configureViewResolvers(ViewResolverRegistry registry) {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		
+
+    	InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/jsp/");
 		viewResolver.setSuffix(".jsp");
-		viewResolver.setOrder(0);
+		viewResolver.setOrder(1);
 		registry.viewResolver(viewResolver);
 		
 		
@@ -69,7 +75,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	        resolver.setPrefix("/templates/");
 	        resolver.setSuffix(".ftl");
 	        resolver.setExposeSpringMacroHelpers(true);  
-	        resolver.setOrder(1);  
+	        resolver.setOrder(2);  
 	        registry.viewResolver(resolver);
          	}
    
@@ -129,16 +135,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return configurer;
     }
     
-   */
- 
-
-
-   
-    
-    
-    
-    
-    
-    
-    
+ */
+  
 }
+  

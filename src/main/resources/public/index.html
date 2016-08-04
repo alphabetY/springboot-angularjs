@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Demo - POC</title>
+    <script src="scripts/lib/angular.min.js"></script>
+    <script src="scripts/lib/angular-resource.min.js"></script>
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/routing.js"></script>
+    <script src="scripts/app/controllers/system-controller.js"></script>
+    <script src="scripts/app/services/navbar-service.js"></script>
+    <script src="scripts/app/controllers/side-navbar-controller.js"></script>
+    <script src="scripts/app/controllers/dashboard-controller.js"></script>
+    <script src="scripts/app/services/dashboard-service.js"></script>
+    <script src="scripts/app/controllers/visual-charts-controller.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta name="MobileOptimized" content="320">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="styles/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="styles/theme/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="styles/theme/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/css/pages/tasks.css" rel="stylesheet" type="text/css" />
+    <link href="styles/theme/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="styles/theme/assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="page-header-fixed">
+
+    <div class="header navbar navbar-inverse navbar-fixed-top" ng-include src="'partials/layouts/header.html'"></div>
+
+    <div class="page-container" ng-controller="SystemCtrl">
+        <div class="page-sidebar-wrapper" ng-controller="SideNavBarCtrl" ng-include src="'partials/layouts/side-navbar.html'"></div>
+
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div ng-include src="'partials/layouts/theme-changer.html'"></div>
+
+                <div ng-switch on="selectedTab">
+                    <div ng-switch-when="1" ng-controller="DashboardCtrl" ng-include src="'partials/system-panel/dashboard.html'"></div>
+                    <div ng-switch-when="5" ng-controller="VisualChartsCtrl" ng-include src="'partials/system-panel/visual-charts.html'"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
