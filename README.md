@@ -13,7 +13,7 @@ Freemark|JSP,AngularjS|Metronic
 ~~~~
 maven project
 
-sca soa,web service
+soa,web service
 
 ~~~~~~
 tel：736629515 ☺
