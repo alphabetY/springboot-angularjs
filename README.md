@@ -1,10 +1,10 @@
 #back
 Spring Boot, 
-druid &MyBatis | Hibernate&springboot JPA,
+druid &MyBatis | Hibernate&springboot JPA,liquibase
 cache,
 springboot security,
-sso,
-web service,
+sso,oauth
+web service,rest api
 websocket|Lucence|pdfbox|xstream|poi,
 ...
 #front
@@ -14,8 +14,6 @@ Freemark|JSP,AngularjS|Metronic
 maven project
 
 sca soa,web service
-
-just begin.
 
 ~~~~~~
 tel：736629515 ☺
