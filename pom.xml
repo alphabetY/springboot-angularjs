@@ -23,8 +23,8 @@
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
         <mapper.version>3.3.6</mapper.version>
         <pagehelper.version>4.1.1</pagehelper.version>
-        
-            <lucene.version>4.6.0</lucene.version>
+        <javax.inject.version>1</javax.inject.version>
+         <lucene.version>4.6.0</lucene.version>
         
         
         
@@ -166,7 +166,11 @@
             <version>3.0-FINAL</version>
         </dependency>
 
-
+          <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax.inject.version}</version>
+        </dependency>
 
 
 
