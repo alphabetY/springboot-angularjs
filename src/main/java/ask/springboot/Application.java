@@ -70,10 +70,11 @@ public class Application extends WebMvcConfigurerAdapter {
     }
 
     @RequestMapping("/")
-    String home() {
+  String home() {
       return "redirect:countries";
-  }
-    
+ }
+  
+   
     @RequestMapping("/jsp")
 	public String welcome(Map<String, Object> model) {
 	

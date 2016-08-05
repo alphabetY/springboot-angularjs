@@ -32,6 +32,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -57,21 +58,30 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
        
        
     }
-    
+   // @Override
+  //  public void addViewControllers(ViewControllerRegistry registry) {
+  //      registry.addViewController("/").setViewName("forward:/index.html");
+  //  }
 
     public void configureViewResolvers(ViewResolverRegistry registry) {
 		
 
+    	
+    	
+    	
     	InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
+		
 		viewResolver.setPrefix("/WEB-INF/jsp/");
 		viewResolver.setSuffix(".jsp");
 		viewResolver.setOrder(1);
 		registry.viewResolver(viewResolver);
 		
 		
+		 
+		
 		  FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();  
-	        resolver.setCache(true);  
+	       resolver.setCache(true);  
 	        resolver.setPrefix("/templates/");
 	        resolver.setSuffix(".ftl");
 	        resolver.setExposeSpringMacroHelpers(true);  
@@ -79,7 +89,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	        registry.viewResolver(resolver);
          	}
    
-    
+   
     
     
 	/*
@@ -135,7 +145,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return configurer;
     }
     
- */
-  
+*/
+    
 }
-  
+ 
