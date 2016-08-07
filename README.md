@@ -15,7 +15,7 @@ pdfbox|xstream|poi,
 Freemark,JSP,AngularjS,Metronic,
 ##说明
 ~~~~
-maven install
+maven，gradle
 ~~~~~~
 736629515 ☺
 
