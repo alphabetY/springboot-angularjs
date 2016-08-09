@@ -173,6 +173,24 @@
 
 
 
+<div class="middle">
+    
+    <#if logged_in??>
+    <a  href="/logout">logout</a>
+    </#if>
+    
+    <#assign cookies = request.getCookies()>
+       <#list cookies as cookie>
+             <#if cookie.name = "userName">
+                   ${cookie.name}
+                   ${cookie.value}
+               </#if>
+      </#list>
+  </div>
+
+
+
+
 <br><br>
 <p>
 <center>----------------------华丽的分割线----------------------</center>
@@ -229,7 +247,6 @@
 <p>
 <center>----------------------华丽的分割线----------------------</center>
 </p>
-
 
 
 

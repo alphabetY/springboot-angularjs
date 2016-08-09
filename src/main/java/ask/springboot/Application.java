@@ -1,4 +1,7 @@
 package ask.springboot;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +15,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -23,14 +28,14 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import freemarker.template.utility.HtmlEscape;
 import freemarker.template.utility.XmlEscape;
 
-
+import javax.servlet.http.HttpSession;
 @Controller
 @EnableWebMvc
 @SpringBootApplication
 @EnableAutoConfiguration
 @ServletComponentScan
 public class Application extends WebMvcConfigurerAdapter {
-    
+	final  String LOGGED_IN = "logged_in";
 	/*
 	  @Bean  
 	    ViewResolver viewResolver() {  
@@ -72,14 +77,44 @@ public class Application extends WebMvcConfigurerAdapter {
         SpringApplication.run(Application.class, args);
     }
 
-    @RequestMapping("/")
-  String home() {
-      return "redirect:countries";
- }
+  //  @RequestMapping("/")
+///  String home() {
+//      return "redirect:countries";
+// }
     @RequestMapping("/login")
-  String login() {
-      return "login";
+  String login(HttpServletResponse resp,HttpServletRequest req,@RequestParam("username") String username,
+               @RequestParam("password") String password, HttpSession session) {
+    	
+    	
+    	  session.setAttribute(LOGGED_IN, true);
+    	  
+    	  Cookie cookie = new Cookie("login",username+"@"+password);  
+          cookie.setPath("/");                //如果路径为/则为整个tomcat目录有用  
+         // cookie.setDomain(".aaa.com");    //设置对所有*.aaa.com为后缀的域名效  
+      
+           int time = 1*60*10;    //1秒*60=1分*60分=1小时*24=1天*7=7天  
+           cookie.setMaxAge(time);  
+         
+           resp.addCookie(cookie); 
+           
+            return "login";
  }
+    
+    @RequestMapping( "/logout")
+    public String logout(HttpServletRequest req, HttpServletResponse resp,HttpSession session) {
+        session.removeAttribute(LOGGED_IN);
+     
+        Cookie cookie = new Cookie("login","");//必须声明一个完全相同名称的Cookie  
+        cookie.setPath("/");//路径也要完全相同  
+       // cookie.setDomain(".aaa.com");//域也要完全相同  
+        cookie.setMaxAge(0);//设置时间为0,以直接删除Cookie  
+        resp.addCookie(cookie);  
+        
+        
+        return "redirect:/";
+    }
+
+    
    
     @RequestMapping("/jsp")
 	public String welcome(Map<String, Object> model) {

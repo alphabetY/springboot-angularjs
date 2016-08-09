@@ -86,9 +86,7 @@ public class UserDetailsService implements org.springframework.security.core.use
 public class CustomUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
                                                                                         
     private final Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
-
-   
-
+    
     @Override
     @Transactional
     public UserDetails loadUserByUsername(final String login) {

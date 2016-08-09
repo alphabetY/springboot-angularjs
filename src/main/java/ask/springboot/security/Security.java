@@ -93,16 +93,20 @@ public class Security extends WebSecurityConfigurerAdapter {
 	        .permitAll();
 		 http
 	        .formLogin().failureUrl("/login?error")
-	        .defaultSuccessUrl("/")
 	        .loginPage("/login")
+	        .defaultSuccessUrl("/countries")
+	        .permitAll()
+	        .and()
+	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(
+	        "/login")
 	        .permitAll();
 		 
         http.httpBasic().and()
             .csrf().disable()
             .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/rest/contacts*/**").permitAll()
-            .antMatchers(HttpMethod.GET, "/rest/photos*/**").permitAll()
-            .antMatchers("/rest/**").authenticated()
+            //.antMatchers(HttpMethod.GET, "/rest/contacts*/**").permitAll()
+           // .antMatchers(HttpMethod.GET, "/rest/photos*/**").permitAll()
+           // .antMatchers("/rest/**").authenticated()
             //.antMatchers("/countries").hasAuthority("admin")
             .antMatchers("/jsp/**").hasAuthority("admin")
             .anyRequest().permitAll();
