@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import ask.springboot.security.CustomUserDetailsService;
 
@@ -21,7 +22,7 @@ import ask.springboot.security.CustomUserDetailsService;
  */
 @Order(Ordered.LOWEST_PRECEDENCE - 8)
 @Configuration
-@EnableWebMvcSecurity
+//@EnableWebMvcSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class Security extends WebSecurityConfigurerAdapter {
     
@@ -59,6 +60,43 @@ public class Security extends WebSecurityConfigurerAdapter {
 	    
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
+		
+		
+		
+		
+		/*
+		 http
+	        .authorizeRequests()
+	        .antMatchers("/login")
+	        .permitAll();
+	    http
+	        .authorizeRequests()
+	        .antMatchers("/registration")
+	        .permitAll();
+	    http
+	        .authorizeRequests().anyRequest().authenticated();
+	    http
+	        .formLogin().failureUrl("/login?error")
+	        .defaultSuccessUrl("/")
+	        .loginPage("/login")
+	        .permitAll()
+	        .and()
+	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(
+	        "/login")
+	        .permitAll();
+		 http.addFilterBefore
+		*/
+
+		 http
+	        .authorizeRequests()
+	        .antMatchers("/login")
+	        .permitAll();
+		 http
+	        .formLogin().failureUrl("/login?error")
+	        .defaultSuccessUrl("/")
+	        .loginPage("/login")
+	        .permitAll();
+		 
         http.httpBasic().and()
             .csrf().disable()
             .authorizeRequests()

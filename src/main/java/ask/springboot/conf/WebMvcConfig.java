@@ -63,6 +63,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   //      registry.addViewController("/").setViewName("forward:/index.html");
   //  }
 
+    
+   // public void addInterceptors(InterceptorRegistry registry) {
+    //    registry.addInterceptor(new LoginInterceptor())
+   //             .addPathPatterns("/posts/create");
+   // }
     public void configureViewResolvers(ViewResolverRegistry registry) {
 		
 
