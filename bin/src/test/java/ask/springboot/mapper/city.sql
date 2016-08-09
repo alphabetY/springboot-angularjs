@@ -14,5 +14,5 @@ CREATE TABLE `city` (
 -- ----------------------------
 -- Records of city
 -- ----------------------------
-INSERT INTO `city` VALUES ('1', '石家庄', '河北');
-INSERT INTO `city` VALUES ('2', '邯郸', '河北');
+INSERT INTO `city` VALUES ('1', '郑州', '河南');
+INSERT INTO `city` VALUES ('2', '深圳', '广东');
