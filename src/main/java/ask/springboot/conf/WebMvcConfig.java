@@ -89,6 +89,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	       resolver.setCache(true);  
 	        resolver.setPrefix("/templates/");
 	        resolver.setSuffix(".ftl");
+	        resolver.setExposeRequestAttributes(true);
+	        resolver.setExposeSessionAttributes(true);
 	        resolver.setExposeSpringMacroHelpers(true);  
 	        resolver.setOrder(2);  
 	        registry.viewResolver(resolver);

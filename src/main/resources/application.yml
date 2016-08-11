@@ -38,7 +38,7 @@ spring:
          prefix: /WEB-INF/
          suffix: .jsp
     freemarker:
-       cache: false
+       cache: true
        request-context-attribute: request
         
 

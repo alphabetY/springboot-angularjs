@@ -82,12 +82,14 @@ public class Application extends WebMvcConfigurerAdapter {
 //      return "redirect:countries";
 // }
     @RequestMapping("/login")
-  String login(HttpServletResponse resp,HttpServletRequest req,@RequestParam("username") String username,
-               @RequestParam("password") String password, HttpSession session) {
+  String login(HttpServletResponse resp,HttpServletRequest req) {
     	
-    	
-    	  session.setAttribute(LOGGED_IN, true);
-    	  
+    	req.getSession().setAttribute(LOGGED_IN, true);
+    	 // session.setAttribute(LOGGED_IN, true);
+    	req.setAttribute("asj", "asj");
+    	req.getSession().setAttribute("ask", "ask");
+    	String   username  =  req.getParameter("username");
+    	String   password =  req.getParameter("password");
     	  Cookie cookie = new Cookie("login",username+"@"+password);  
           cookie.setPath("/");                //如果路径为/则为整个tomcat目录有用  
          // cookie.setDomain(".aaa.com");    //设置对所有*.aaa.com为后缀的域名效  
@@ -96,13 +98,14 @@ public class Application extends WebMvcConfigurerAdapter {
            cookie.setMaxAge(time);  
          
            resp.addCookie(cookie); 
-           
+          
             return "login";
  }
     
     @RequestMapping( "/logout")
-    public String logout(HttpServletRequest req, HttpServletResponse resp,HttpSession session) {
-        session.removeAttribute(LOGGED_IN);
+    public String logout(HttpServletRequest req, HttpServletResponse resp) {
+    	req.getSession().setAttribute(LOGGED_IN, true);
+    	//session.removeAttribute(LOGGED_IN);
      
         Cookie cookie = new Cookie("login","");//必须声明一个完全相同名称的Cookie  
         cookie.setPath("/");//路径也要完全相同  
