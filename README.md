@@ -16,6 +16,9 @@ Freemark,JSP,AngularjS,Metronic,
 ##说明
 ~~~~
 maven，gradle
+
+jdk 1.8 
+
 ~~~~~~
 736629515 ☺
 
