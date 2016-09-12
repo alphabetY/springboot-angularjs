@@ -23,5 +23,5 @@ maven，gradle,jdk 1.8
 127.0.0.1:8080/login    admin admin   freemark
 127.0.0.1:8080/jsp        angularjs
 ~~~~~~
-736629515 ☺
+☺
 
