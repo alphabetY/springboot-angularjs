@@ -15,7 +15,13 @@ pdfbox|xstream|poi,
 Freemark,JSP,AngularjS,Metronic,
 ##说明
 ~~~~
-maven，gradle
+maven，gradle,jdk 1.8 
+
+导入/resources/test.sql，数据库配置等参考application.yml。
+执行ask.springboot.java的main运行服务器端或打成war包,jar包运行。
+访问
+127.0.0.1:8080/login    admin admin   freemark
+127.0.0.1:8080/jsp        angularjs
 ~~~~~~
-736629515 ☺
+☺
 

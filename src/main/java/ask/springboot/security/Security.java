@@ -88,8 +88,8 @@ public class Security extends WebSecurityConfigurerAdapter {
 		*/
 
 		 http
-	        .authorizeRequests()
-	        .antMatchers("/login")
+	       .authorizeRequests()
+	       .antMatchers("/login")
 	        .permitAll();
 		 http
 	        .formLogin().failureUrl("/login?error")

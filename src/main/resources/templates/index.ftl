@@ -3,11 +3,7 @@
 <html>
 <head>
     <title>测试页面</title>
-    
-    
-  
-    
-    
+
     <script src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
     <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
@@ -166,19 +162,6 @@
 
         window.addEventListener("load", init, false);
   
-      document.cookie="info="+name+","+passw +";"; 
-        
-     function getcookie(){		
-var str = document.cookie;	
-var arrcookie = str.split(";");	
-var userid;
-var username;
-var arr = arrcookie[0].split("=");
-userid= arr[1];	
-arr = arrcookie[1].split("=");	
-username=arr[1];
-alert("userid的值是："+userid+",username的值是："+username);	
-}
       
     </script>
     
@@ -429,7 +412,7 @@ ${Session["ask"]}
 
 
 
-<div class="middle"><h1>copyright:信息中心    </h1>18392977827</div>
+
 
 
 

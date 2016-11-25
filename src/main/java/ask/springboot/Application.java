@@ -81,6 +81,7 @@ public class Application extends WebMvcConfigurerAdapter {
 ///  String home() {
 //      return "redirect:countries";
 // }
+    
     @RequestMapping("/login")
   String login(HttpServletResponse resp,HttpServletRequest req) {
     	

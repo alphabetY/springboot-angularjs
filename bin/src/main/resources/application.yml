@@ -1,16 +1,16 @@
 server:
     port: 8080
-    context-path: #/liuzh/
+#    context-path: #/liuzh/
 
 logging:
     level:
         tk.mybatis: DEBUG
-security:
-  user:
-    name: admin
-    password: admin123
-  basic:
-    realm: Please provide your authentication details
+#security:
+#  user:
+#    name: admin
+#    password: admin123
+#  basic:
+#    realm: Please provide your authentication details
 spring:
     datasource:
      # 使用druid数据源
@@ -38,7 +38,7 @@ spring:
          prefix: /WEB-INF/
          suffix: .jsp
     freemarker:
-       cache: false
+       cache: true
        request-context-attribute: request
         
 

@@ -165,11 +165,53 @@
         }
 
         window.addEventListener("load", init, false);
-
+  
+      document.cookie="info="+name+","+passw +";"; 
+        
+     function getcookie(){		
+var str = document.cookie;	
+var arrcookie = str.split(";");	
+var userid;
+var username;
+var arr = arrcookie[0].split("=");
+userid= arr[1];	
+arr = arrcookie[1].split("=");	
+username=arr[1];
+alert("userid的值是："+userid+",username的值是："+username);	
+}
+      
     </script>
     
 </head>
 <body>
+
+<#list 1..3 as username>
+   <#--循环中的变量出了循环就消失-->
+   ${username}
+</#list>
+
+
+
+${Session["ask"]}
+
+
+
+
+<div class="middle">
+
+   
+    
+    <#if logged_in??>
+    <a  href="/logout">logout</a>
+     
+
+   <#else> 
+   <a  href="/login">login</a>
+    </#if>
+
+   
+  </div>
+
 
 
 
@@ -229,7 +271,6 @@
 <p>
 <center>----------------------华丽的分割线----------------------</center>
 </p>
-
 
 
 
