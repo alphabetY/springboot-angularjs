@@ -123,6 +123,6 @@ public class Application extends WebMvcConfigurerAdapter {
     @RequestMapping("/jsp")
 	public String welcome(Map<String, Object> model) {
 	
-		return "welcome";
+		return "index1";
 	}
 }

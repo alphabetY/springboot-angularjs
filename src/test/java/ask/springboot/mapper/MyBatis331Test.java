@@ -63,6 +63,7 @@ public class MyBatis331Test {
         city2List.add(new City2("石家庄", "河北"));
         city2List.add(new City2("邯郸", "河北"));
         city2List.add(new City2("秦皇岛", "河北"));
+        
         Assert.assertEquals(3, mapper.insertCities(city2List));
         for (City2 c2 : city2List) {
             logger.info(c2.toString());

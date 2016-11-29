@@ -56,8 +56,7 @@ public class IndexController {
     	 
           indexService.createIndex(docPath, indexPath);
           result.addObject("msg", "success");
-         return result;
-      
+         return result;    
     }
  
     @RequestMapping(value = "/query")

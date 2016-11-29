@@ -35,6 +35,17 @@ public class Country extends BaseEntity {
      */
     private String countrycode;
 
+    /*
+    private String temp1; 
+    public String gettemp1() {
+        return temp1;
+    }
+    public void settemp1(String temp1) {
+        this.temp1 = temp1;
+    }
+  */
+    
+    
     /**
      * 获取名称
      *

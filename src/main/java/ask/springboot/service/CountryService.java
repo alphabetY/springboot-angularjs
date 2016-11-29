@@ -28,6 +28,9 @@ import com.github.pagehelper.PageHelper;
 
 import ask.springboot.mapper.CountryMapper;
 import ask.springboot.model.Country;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
+import tk.mybatis.mapper.util.StringUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,10 +47,31 @@ public class CountryService {
     public List<Country> getAll(Country country) {
         if (country.getPage() != null && country.getRows() != null) {
             PageHelper.startPage(country.getPage(), country.getRows(), "id");
+         
         }
         return countryMapper.selectAll();
     }
 
+    
+   
+    public List<Country> selectByCountry(Country country, int page, int rows) {
+        Example example = new Example(Country.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (StringUtil.isNotEmpty(country.getCountryname())) {
+            criteria.andLike("countryname", "%" + country.getCountryname() + "%");
+        }
+        if (StringUtil.isNotEmpty(country.getCountrycode())) {
+            criteria.andLike("countrycode", "%" + country.getCountrycode() + "%");
+        }
+        if (country.getId() != null) {
+            criteria.andEqualTo("id", country.getId());
+        }
+        //分页查询
+        PageHelper.startPage(page, rows);
+        return countryMapper.selectByExample(example);
+    }
+    
+    
     public Country getById(Integer id) {
         return countryMapper.selectByPrimaryKey(id);
     }
@@ -63,4 +87,13 @@ public class CountryService {
             countryMapper.insert(country);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

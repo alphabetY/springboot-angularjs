@@ -56,8 +56,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
        
-       
+        registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
     }
+   
    // @Override
   //  public void addViewControllers(ViewControllerRegistry registry) {
   //      registry.addViewController("/").setViewName("forward:/index.html");

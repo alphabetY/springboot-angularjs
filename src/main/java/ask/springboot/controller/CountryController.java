@@ -34,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,6 +48,7 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
  
+    /*
     @RequestMapping
     public ModelAndView getAll(Country country) {
         ModelAndView result = new ModelAndView("index");
@@ -57,7 +59,22 @@ public class CountryController {
         result.addObject("rows", country.getRows());
         return result;
     }
-
+*/
+    
+    @RequestMapping
+    public ModelAndView getList(Country country,
+                                @RequestParam(required = false, defaultValue = "1") int page,
+                                @RequestParam(required = false, defaultValue = "10") int rows) {
+        ModelAndView result = new ModelAndView("indexbeifen");
+        List<Country> countryList = countryService.selectByCountry(country, page, rows);
+        result.addObject("pageInfo", new PageInfo<Country>(countryList));
+        result.addObject("queryParam", country);
+        result.addObject("page", page);
+        result.addObject("rows", rows);
+        return result;
+    }
+    
+    
     @RequestMapping(value = "/add")
     public ModelAndView add() {
         ModelAndView result = new ModelAndView("view");

@@ -168,14 +168,6 @@
 </head>
 <body>
 
-<#list 1..3 as username>
-   <#--循环中的变量出了循环就消失-->
-   ${username}
-</#list>
-
-
-
-${Session["ask"]}
 
 
 
@@ -225,35 +217,7 @@ ${Session["ask"]}
 </table>
 
 
-<br><br>
-<p>
-<center>----------------------华丽的分割线----------------------</center>
-</p>
-<br><br>
 
-<div class="middle">
-        
-          <center>
-          <table>
-            
-            <tr >
-                <td><a href="${request.contextPath}/search">去搜索</a></td>
-               
-            </tr>
-            <tr >
-               
-                <td><a href="${request.contextPath}/search">去爬取</a></td>
-               
-            </tr>
-           
-</table>
- <center>
-   </div>
-
-<br><br>
-<p>
-<center>----------------------华丽的分割线----------------------</center>
-</p>
 
 
 
@@ -261,15 +225,17 @@ ${Session["ask"]}
     <div class="middle">
         <h1 style="padding: 50px 0 20px;"> 数据库</h1>
 
-        <form action="${request.contextPath}/countries" method="post">
+
+
+      <form action="${request.contextPath}/xiangliao" method="post">
             <table class="gridtable" style="width:100%;">
                 <tr>
-                    <th> 名称：</th>
-                    <td><input type="text" name="countryname"
-                               value="<#if queryParam.countryname??>${queryParam.countryname}</#if>"/></td>
-                    <th> 代码：</th>
-                    <td><input type="text" name="countrycode"
-                               value="<#if queryParam.countrycode??>${queryParam.countrycode}</#if>"/></td>
+                    <th> huahewumingcheng：</th>
+                    <td><input type="text" name="huahewumingcheng"
+                              </td>
+                    <th> cas：</th>
+                    <td><input type="text" name="cas"
+                              </td>
                     <td rowspan="2"><input type="submit" value="查询"/></td>
                 </tr>
                 <tr>
@@ -280,6 +246,8 @@ ${Session["ask"]}
                 </tr>
             </table>
         </form>
+
+
     <#if pageInfo??>
         <table class="gridtable" style="width:100%;">
             <tr>
@@ -349,27 +317,40 @@ ${Session["ask"]}
                 </tr>
             </#if>
         </table>
+        
         <table class="gridtable" style="width:100%;">
             <thead>
             <tr>
-                <th colspan="4">查询结果 - [<a href="${request.contextPath}/countries/add">新增 (地区)</a>]</th>
+                <th colspan="9">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>]</th>
             </tr>
+           
             <tr>
-                <th>ID</th>
-                <th> 名</th>
-                <th> 代码</th>
-                <th>操作</th>
+          
+                <th> 序号名</th>
+                <th>  化合物名称  </th>
+                 <th>    CAS号</th>
+                 <th>   英文名称 </th>
+                 <th>    分子式</th>
+                 <th>    香韵类别</th>
+                 <th>    阈值范围</th>
+                 <th>    作用阈值</th>
+                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-                <#list pageInfo.list as country>
+                <#list pageInfo.list as xiangliao>
                 <tr>
-                    <td>${country.id}</td>
-                    <td>${country.countryname}</td>
-                    <td>${country.countrycode}</td>
-                    <td style="text-align:center;">[<a
-                            href="${request.contextPath}/countries/view/${country.id}">修改</a>] -
-                        [<a href="${request.contextPath}/countries/delete/${country.id}">删除</a>]
+                    <td>${xiangliao.xuhao}</td>
+                    <td>${xiangliao.huahewumingcheng}</td>
+                    <td>${xiangliao.cas}</td>
+                    <td>${xiangliao.yingwenmingcheng}</td>
+                    <td>${xiangliao.fenzishi}</td>
+                    <td>${xiangliao.xiangyunleibie}</td>
+                    <td>${xiangliao.yuzhifanwei}</td>
+                    <td>${xiangliao.zuoyongyuzhi}</td>
+                       <td style="text-align:center;">[<a
+                            href="${request.contextPath}/xiangliao/view/${xiangliao.xuhao}">修改</a>] -
+                        [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.xuhao}">删除</a>]
                     </td>
                 </tr>
                 </#list>
@@ -379,10 +360,10 @@ ${Session["ask"]}
             <tr>
                 <#if pageInfo.hasPreviousPage>
                     <td>
-                        <a href="${request.contextPath}/countries?page=1&rows=${pageInfo.pageSize}&countryname=${queryParam.countryname}&countrycode=${queryParam.countrycode}">首页</a>
+                        <a href="${request.contextPath}/xiangliao?page=1&rows=${pageInfo.pageSize}">首页</a>
                     </td>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.prePage}&rows=${pageInfo.pageSize}&countryname=${queryParam.countryname}&countrycode=${queryParam.countrycode}">前一页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.prePage}&rows=${pageInfo.pageSize}">前一页</a>
                     </td>
                 </#if>
                 <#list pageInfo.navigatepageNums as nav>
@@ -391,16 +372,16 @@ ${Session["ask"]}
                     </#if>
                     <#if nav != pageInfo.pageNum>
                         <td>
-                            <a href="${request.contextPath}/countries?page=${nav}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">${nav}</a>
+                            <a href="${request.contextPath}/xiangliao?page=${nav}&rows=${pageInfo.pageSize}">${nav}</a>
                         </td>
                     </#if>
                 </#list>
                 <#if pageInfo.hasNextPage>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.nextPage}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">下一页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.nextPage}&rows=${pageInfo.pageSize}">下一页</a>
                     </td>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.pages}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">尾页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.pages}&rows=${pageInfo.pageSize}">尾页</a>
                     </td>
                 </#if>
             </tr>
