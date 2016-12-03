@@ -94,7 +94,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 		 http
 	        .formLogin().failureUrl("/login?error")
 	        .loginPage("/login")
-	        .defaultSuccessUrl("/countries")
+	        .defaultSuccessUrl("/xiangliao")
 	        .permitAll()
 	        .and()
 	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(

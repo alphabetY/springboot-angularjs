@@ -48,7 +48,7 @@ public class XiangLiaoService {
     @Autowired
     private XiangLiaoMapper xiangliaoMapper;
 
- 
+    
     
     public List<XiangLiao> getAll() {
         
@@ -92,46 +92,42 @@ public class XiangLiaoService {
     
    
     
-    public XiangLiao getById(String str) {
-       
-    	
-        
-        XiangLiao xiangliao =new XiangLiao();
-    	xiangliao.setXuhao(str);
-    	
-       return  xiangliaoMapper.selectOne(xiangliao);
+    public XiangLiao getById(Integer id) {
+        return xiangliaoMapper.selectByPrimaryKey(id);
     }
 
-    public void deleteById(String str) {
+    public void deleteById(Integer id) {
+    	xiangliaoMapper.deleteByPrimaryKey(id);
+    }
+  public void deleteAll() {
     	
-    	System.out.println("=========="+str);
-    	//xiangliaoMapper.deleteByPrimaryKey(str);
+	  
+	 
+	  List<XiangLiao>  lis =  xiangliaoMapper.selectAll();
+	   
+	  for(XiangLiao xiangliao :lis){
+		Example example = new Example(XiangLiao.class);
+		Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("xuhao",xiangliao.getXuhao());
+        xiangliaoMapper.deleteByExample(example);
+    	}
     	
-    	Example example = new Example(XiangLiao.class);
-        Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("xuhao",str);
-        
-        
-    	xiangliaoMapper.deleteByExample(example);
     }
 
     public void save(XiangLiao xiangliao) {
-        if (xiangliao.getXuhao() != null) {
-        	
+      
+    	
+        	 xiangliaoMapper.insert(xiangliao);
+        	 
         
-        	
-        	xiangliaoMapper.updateByPrimaryKey(xiangliao);
-        	
-        	
-        } else {
-        	
-        	xiangliaoMapper.insert(xiangliao);
-        	
-        	
-        }
     }
     
+     public void update(XiangLiao xiangliao) {
     
+	
+	           xiangliaoMapper.updateByPrimaryKeySelective(xiangliao);
+	           
+        }
     
     
     

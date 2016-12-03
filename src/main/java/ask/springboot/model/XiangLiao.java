@@ -1,6 +1,6 @@
 package ask.springboot.model;
 
-public class XiangLiao {
+public class XiangLiao extends BaseEntity {
 
 	private String xuhao;
 	private String huahewumingcheng;

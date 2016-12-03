@@ -83,8 +83,10 @@ public class XiangLiaoController {
     @RequestMapping(value = "/view/{id}")
     public ModelAndView view(@PathVariable Integer id) {
         ModelAndView result = new ModelAndView("view");
-        XiangLiao xiaoliao = xiangliaoService.getById(String.valueOf(id));
-        result.addObject("xiaoliao", xiaoliao);
+        XiangLiao xiangliao = xiangliaoService.getById(id);
+        
+      
+        result.addObject("xiangliao", xiangliao);
         return result;
     }
 
@@ -92,7 +94,11 @@ public class XiangLiaoController {
     @RequestMapping(value = "/delete/{id}")
     public ModelAndView delete(@PathVariable Integer id, RedirectAttributes ra) {
         ModelAndView result = new ModelAndView("redirect:/xiangliao");
-        xiangliaoService.deleteById(String.valueOf(id));
+       
+        System.out.println("id"+id);
+        
+        xiangliaoService.deleteById(id);
+
         ra.addFlashAttribute("msg", "删除成功!");
         return result;
     }
@@ -102,7 +108,7 @@ public class XiangLiaoController {
     public ModelAndView save(XiangLiao xiangliao) {
         ModelAndView result = new ModelAndView("view");
         String msg = xiangliao.getXuhao() == null ? "新增成功!" : "更新成功!";
-        xiangliaoService.save(xiangliao);
+        xiangliaoService.update(xiangliao);
         result.addObject("xiangliao", xiangliao);
         result.addObject("msg", msg);
         return result;
@@ -113,25 +119,14 @@ public class XiangLiaoController {
         ModelAndView result = new ModelAndView("tubiao");
        
         
+        List<XiangLiao> xiangliaoList = xiangliaoService.getAll();
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        for(XiangLiao xiangliao1 : xiangliaoList)
+        {
+
+        }
+
         return result;
     }
     

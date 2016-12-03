@@ -6,6 +6,7 @@
 
     <script src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
     <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
+    
     <style type="text/css">
         .pageDetail {
             display: none;
@@ -15,6 +16,13 @@
             display: table-row;
         }
     </style>
+
+     <style type="text/css">
+        td, th { border: 1px solid #CCC; }
+        table { border: 1px solid black; }
+        #dropbox:hover { cursor: pointer;}
+    </style>
+    
     <script>
         $(function () {
             $('#list').click(function () {
@@ -22,147 +30,6 @@
             });
         });
 
-    </script>
-     <style type="text/css">
-        td, th { border: 1px solid #CCC; }
-        table { border: 1px solid black; }
-        #dropbox:hover { cursor: pointer;}
-    </style>
-    <script>
-        function init() {
-            var dropbox;
-
-            dropbox = document.getElementById("dropbox");
-            dropbox.addEventListener("dragenter", dragenter, false);
-            dropbox.addEventListener("dragover", dragover, false);
-            dropbox.addEventListener("drop", drop, false);
-        }
-
-        function dragenter(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-
-        function dragover(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-
-        function drop(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            var dt = e.dataTransfer;
-            var files = dt.files;
-
-            handleFiles(files);
-        }
-
-        function handleFiles(files) {
-            var imageType = /image.*/;
-
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-
-//                if (!file.type.match(imageType)) {
-//                    continue;
-//                }
-
-                var img = document.createElement("img");
-                img.width = 80;
-                img.classList.add("obj");
-                img.file = file;
-
-                var progress = document.createElement("progress");
-                progress.value = 0;
-                progress.max = 100;
-                img.progress = progress;
-
-                var tr = document.createElement("tr");
-                var td = document.createElement('td');
-                td.appendChild(img);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                td.appendChild(progress);
-                tr.appendChild(td);
-                var status = document.createElement('td');
-                status.innerHTML = "pending";
-                tr.appendChild(status);
-
-                preview.appendChild(tr); // Assuming that "preview" is a the div output where the content will be displayed.
-
-                var reader = new FileReader();
-                reader.onload = (function (aImg, aFile, aProgress, aStatus) {
-                    return function (e) {
-                        if (aFile.type.match(imageType)) {
-                            aImg.src = e.target.result;
-                        }
-
-                        new FileUpload(aFile, aProgress, aStatus);
-                    };
-                })(img, file, progress, status);
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function FileUpload(file, progress, status) {
-            var xhr = new XMLHttpRequest();
-            this.file = file;
-            this.progress = progress;
-            this.xhr = xhr;
-
-            var self = this;
-            xhr.upload.onloadstart = function (e) {
-                status.innerHTML = "uploading";
-            };
-            xhr.upload.onprogress = function (e) {
-                if (e.lengthComputable) {
-                    self.progress.value = Math.round((e.loaded * 100) / e.total);
-                }
-            };
-            xhr.upload.onload = function (e) {
-                self.progress.value = 100;
-            };
-
-            xhr.open("POST", window.location.href + "upload", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        while (status.firstChild) {
-                            status.removeChild(status.firstChild);
-                        }
-                        var link = document.createElement('a');
-                        link.href = window.location.href + "file/" + file.name;
-                        link.target = "_blank";
-                        var text = document.createTextNode("success");
-                        link.appendChild(text);
-                        status.appendChild(link);
-                    }
-                    else {
-                        status.innerHTML = "fail";
-                    }
-                }
-
-                console.log(xhr.readyState + "," + xhr.status + "," + xhr.responseText)
-            };
-
-            var formData = new FormData();
-            formData.append("file", file, file.name);
-            formData.append("description", "Пользовательский файл");
-
-            xhr.send(formData);
-        }
-
-        function clickFiles() {
-            var el = document.getElementById("formFiles");
-            if (el) {
-                el.click();
-            }
-        }
-
-        window.addEventListener("load", init, false);
-  
-      
     </script>
     
 </head>
@@ -192,28 +59,37 @@
 
 <br><br>
 <p>
-<center>----------------------华丽的分割线----------------------</center>
+<center>----------------------河南中烟可视化----------------------</center>
 </p>
 <br><br>
 
 
 
   <div class="middle">
-<form>
-    <!--<input type="file" id="files" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">-->
-    <input type="file" id="formFiles" multiple style="display:none" onchange="handleFiles(this.files)">
+
+<form id="form1" name="form1" method="post" action="${request.contextPath}/countriesupload" enctype="multipart/form-data">
+ <table border="0" align="center">
+  <tr>
+  
+  <tr>
+   <td>上传文件：</td>
+   <td><input name="file" type="file" size="20" ></td>
+  </tr>    
+  <tr>   
+   <td></td><td>
+    <input type="submit" name="submit" value="提交" >
+    <input type="reset" name="reset" value="重置" >
+   </td>
+  </tr>
+
+  
+ </table>
+ 
+
+ 
 </form>
 
-<div>
-    <div id="dropbox" style="margin:30px; width:500px; height:300px; border:1px dotted grey;" onclick="clickFiles()">拖到你的文件，到碗里来。或点我。</div>
-</div>
-
-<table id="preview">
-    <tr>
-        <th>Preview</th>
-        <th>Progress</th>
-        <th>Status</th>
-    </tr>
+ 
 </table>
 
 
@@ -223,7 +99,7 @@
 
 <div class="wrapper">
     <div class="middle">
-        <h1 style="padding: 50px 0 20px;"> 数据库</h1>
+        <h1 style="padding: 50px 0 20px;"> 数据</h1>
 
 
 
@@ -318,12 +194,20 @@
             </#if>
         </table>
         
-        <table class="gridtable" style="width:100%;">
+        <table class="gridtable" border="10" style="width:100%;">
             <thead>
             <tr>
-                <th colspan="9">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>]</th>
+                <th colspan="11">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>][<a href="${request.contextPath}/xiangliao/tubiao">饼图</a>]
+                 [<a href="${request.contextPath}/xiangliao/tubiao">柱状图</a>]
+                 [<a href="${request.contextPath}/xiangliao/tubiao">多维图</a>]
+                 [<a href="${request.contextPath}/xiangliao/tubiao">层次图</a>]
+                </th>
+                 
             </tr>
            
+            
+            
+            </thead>
             <tr>
           
                 <th> 序号名</th>
@@ -334,23 +218,27 @@
                  <th>    香韵类别</th>
                  <th>    阈值范围</th>
                  <th>    作用阈值</th>
+                 <th>    分子量</th>
+                 <th>    结构式</th>
                  <th>操作</th>
             </tr>
-            </thead>
+           
             <tbody>
                 <#list pageInfo.list as xiangliao>
                 <tr>
-                    <td>${xiangliao.xuhao}</td>
-                    <td>${xiangliao.huahewumingcheng}</td>
-                    <td>${xiangliao.cas}</td>
-                    <td>${xiangliao.yingwenmingcheng}</td>
-                    <td>${xiangliao.fenzishi}</td>
-                    <td>${xiangliao.xiangyunleibie}</td>
-                    <td>${xiangliao.yuzhifanwei}</td>
-                    <td>${xiangliao.zuoyongyuzhi}</td>
+                    <td><#if xiangliao.xuhao??>${xiangliao.xuhao}</#if></td>
+                    <td><#if xiangliao.huahewumingcheng??>${xiangliao.huahewumingcheng}</#if></td>
+                    <td><#if xiangliao.cas??>${xiangliao.cas}</#if></td>
+                    <td><#if xiangliao.yingwenmingcheng??>${xiangliao.yingwenmingcheng}</#if></td>
+                    <td><#if xiangliao.fenzishi??>${xiangliao.fenzishi}</#if></td>
+                    <td><#if xiangliao.xiangyunleibie??>${xiangliao.xiangyunleibie}</#if></td>
+                    <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
+                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if>${xiangliao.zuoyongyuzhi}</td>
+                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if>${xiangliao.zuoyongyuzhi}</td>
+                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if>${xiangliao.zuoyongyuzhi}</td>
                        <td style="text-align:center;">[<a
-                            href="${request.contextPath}/xiangliao/view/${xiangliao.xuhao}">修改</a>] -
-                        [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.xuhao}">删除</a>]
+                            href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
+                        [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.id}">删除</a>]
                     </td>
                 </tr>
                 </#list>
