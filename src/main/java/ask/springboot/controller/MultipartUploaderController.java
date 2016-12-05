@@ -141,6 +141,8 @@ public class MultipartUploaderController {
             HSSFCell cell7=(HSSFCell)itet.next(); 
             xiangliao.setZuoyongyuzhi(cell7.getRichStringCellValue().toString());
             
+            HSSFCell cell8=(HSSFCell)itet.next(); 
+            xiangliao.setFenziliang(String.valueOf(cell8.getNumericCellValue()));
         
 
                  xiangliaoService.save(xiangliao);

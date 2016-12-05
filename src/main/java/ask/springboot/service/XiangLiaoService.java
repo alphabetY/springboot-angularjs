@@ -65,9 +65,7 @@ public class XiangLiaoService {
     	
     	String cas=request.getParameter("cas");
     	
-    	System.out.println("huahewumingcheng=="+huahewumingcheng);
-     	System.out.println("cas=="+cas);
-     	
+   	
     	Example example = new Example(XiangLiao.class);
         Example.Criteria criteria = example.createCriteria();
         
@@ -98,6 +96,10 @@ public class XiangLiaoService {
 
     public void deleteById(Integer id) {
     	xiangliaoMapper.deleteByPrimaryKey(id);
+    	
+    	
+    	
+    	
     }
   public void deleteAll() {
     	
@@ -117,8 +119,8 @@ public class XiangLiaoService {
     public void save(XiangLiao xiangliao) {
       
     	
-        	 xiangliaoMapper.insert(xiangliao);
-        	 
+        	 xiangliaoMapper.insertSelective(xiangliao);
+        	
         
     }
     
