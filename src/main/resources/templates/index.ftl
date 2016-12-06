@@ -198,7 +198,8 @@
          <table class="gridtable"  style="width:100%;">
          <thead>
             <tr>
-                <th colspan="11">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>][<a href="${request.contextPath}/xiangliao/tubiao">饼图</a>]
+                <th colspan="11">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>]
+                [<a href="${request.contextPath}/xiangliao/tubiao">饼图</a>]
                  [<a href="${request.contextPath}/xiangliao/tubiao">柱状图</a>]
                  [<a href="${request.contextPath}/xiangliao/tubiao">多维图</a>]
                  [<a href="${request.contextPath}/xiangliao/tubiao">层次图</a>]

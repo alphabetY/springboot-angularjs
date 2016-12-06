@@ -1,5 +1,6 @@
 package ask.springboot;
 import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,7 +29,19 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import freemarker.template.utility.HtmlEscape;
 import freemarker.template.utility.XmlEscape;
 
+
 import javax.servlet.http.HttpSession;
+
+
+
+
+
+
+
+
+
+
+
 @Controller
 @EnableWebMvc
 @SpringBootApplication

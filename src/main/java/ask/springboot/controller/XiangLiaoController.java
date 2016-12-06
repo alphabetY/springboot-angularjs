@@ -37,10 +37,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,17 +68,20 @@ public class XiangLiaoController {
         result.addObject("rows", country.getRows());
         return result;
     }
-*/
+      */
     
     @RequestMapping
     public ModelAndView getList( HttpServletRequest request,
                                 @RequestParam(required = false, defaultValue = "1") int page,
                                 @RequestParam(required = false, defaultValue = "10") int rows) {
         ModelAndView result = new ModelAndView("index");
+        
         List<XiangLiao> xiangliaoList = xiangliaoService.selectByxiangliao(request, page, rows);
+        
         result.addObject("pageInfo", new PageInfo<XiangLiao>(xiangliaoList));
        
         result.addObject("page", page);
+        
         result.addObject("rows", rows);
         return result;
     }
@@ -115,24 +123,49 @@ public class XiangLiaoController {
     }
     
     @RequestMapping(value = "/tubiao")
-    public ModelAndView zhanshi(XiangLiao xiangliao) {
+    public ModelAndView tubiao1(XiangLiao xiangliao) {
         ModelAndView result = new ModelAndView("tubiao");
-       
         
+        return result;
+    }
+    @RequestMapping(value = "/tubiao1")
+    @ResponseBody  
+    public  List<Integer>  zhanshi(XiangLiao xiangliao) {
+       
+        /*
         List<XiangLiao> xiangliaoList = xiangliaoService.getAll();
         
-        
+        Set<String>  leibie=new HashSet<String>();
         for(XiangLiao xiangliao1 : xiangliaoList)
         {
-
-        	
-        	
-        	
-        	
-        	
+           leibie.add(xiangliao1.getXiangyunleibie());
         }
-
-        return result;
+        
+        for(String str : leibie)
+        { 	
+        for(XiangLiao xiangliao1 : xiangliaoList)
+           {
+               
+        	if(xiangliao1.getXiangyunleibie().equals(str))
+        	 {
+        		
+        	 }
+        	
+           }
+        }
+        */
+        
+        List<Integer> lis =new ArrayList<Integer>();
+        
+        lis.add(1000);
+        lis.add(1000);
+        lis.add(1000);
+        lis.add(1000);
+        lis.add(1000);
+        
+ 
+        
+        return lis;
     }
     
     
