@@ -4,19 +4,20 @@
     <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body style="margin-top:50px;overflow: hidden;">
-<form action="${request.contextPath}/countries/save" method="post">
-    <input type="hidden" name="id" value="<#if country.id??>${country.id}</#if>"/>
+<form action="${request.contextPath}/xiangliao/save" method="post">
+    <input type="hidden" name="id" value="<#if xiangliao.id??>${xiangliao.id}</#if>"/>
     <table class="gridtable" style="width:800px;">
         <tr>
-            <th colspan="5"> 信息 - [<a href="${request.contextPath}/countries">返回</a>]</th>
+            <th colspan="5"> 信息 - [<a href="${request.contextPath}/xiangliao">返回</a>]</th>
         </tr>
         <tr>
-            <th> 名称：</th>
-            <td><input type="text" name="countryname" value="<#if country.countryname??>${country.countryname}</#if>"/>
+            <th> 分子式：</th>
+            <td><input type="text" name="fenzishi" />
             </td>
-            <th> 代码：</th>
-            <td><input type="text" name="countrycode" value="<#if country.countrycode??>${country.countrycode}</#if>"/>
+            <th> 化合物名称：</th>
+            <td><input type="text" name="huahewumingcheng" />
             </td>
+            
             <td><input type="submit" value="保存"/></td>
         </tr>
     <#if msg??>

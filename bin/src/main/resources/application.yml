@@ -15,7 +15,7 @@ spring:
     datasource:
      # 使用druid数据源
         name: test
-        url: jdbc:mysql://127.0.0.1:3306/test
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8
         username: root
         password:
         type: com.alibaba.druid.pool.DruidDataSource
@@ -33,13 +33,13 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-    mvc:
-       view:
-         prefix: /WEB-INF/
-         suffix: .jsp
+#   mvc:
+#     view:
+#         prefix: /WEB-INF/
+#         suffix: .jsp
     freemarker:
-       cache: true
-       request-context-attribute: request
+      cache: false
+      request-context-attribute: request
         
 
 #以下属性不可用

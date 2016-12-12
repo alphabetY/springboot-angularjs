@@ -3,13 +3,10 @@
 <html>
 <head>
     <title>测试页面</title>
+
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
     
-    
-  
-    
-    
-    <script src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
-    <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
         .pageDetail {
             display: none;
@@ -19,6 +16,13 @@
             display: table-row;
         }
     </style>
+
+     <style type="text/css">
+        td, th { border: 1px solid #CCC; }
+        table { border: 1px solid black; }
+        #dropbox:hover { cursor: pointer;}
+    </style>
+    
     <script>
         $(function () {
             $('#list').click(function () {
@@ -27,266 +31,73 @@
         });
 
     </script>
-     <style type="text/css">
-        td, th { border: 1px solid #CCC; }
-        table { border: 1px solid black; }
-        #dropbox:hover { cursor: pointer;}
-    </style>
-    <script>
-        function init() {
-            var dropbox;
-
-            dropbox = document.getElementById("dropbox");
-            dropbox.addEventListener("dragenter", dragenter, false);
-            dropbox.addEventListener("dragover", dragover, false);
-            dropbox.addEventListener("drop", drop, false);
-        }
-
-        function dragenter(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-
-        function dragover(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-
-        function drop(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            var dt = e.dataTransfer;
-            var files = dt.files;
-
-            handleFiles(files);
-        }
-
-        function handleFiles(files) {
-            var imageType = /image.*/;
-
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-
-//                if (!file.type.match(imageType)) {
-//                    continue;
-//                }
-
-                var img = document.createElement("img");
-                img.width = 80;
-                img.classList.add("obj");
-                img.file = file;
-
-                var progress = document.createElement("progress");
-                progress.value = 0;
-                progress.max = 100;
-                img.progress = progress;
-
-                var tr = document.createElement("tr");
-                var td = document.createElement('td');
-                td.appendChild(img);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                td.appendChild(progress);
-                tr.appendChild(td);
-                var status = document.createElement('td');
-                status.innerHTML = "pending";
-                tr.appendChild(status);
-
-                preview.appendChild(tr); // Assuming that "preview" is a the div output where the content will be displayed.
-
-                var reader = new FileReader();
-                reader.onload = (function (aImg, aFile, aProgress, aStatus) {
-                    return function (e) {
-                        if (aFile.type.match(imageType)) {
-                            aImg.src = e.target.result;
-                        }
-
-                        new FileUpload(aFile, aProgress, aStatus);
-                    };
-                })(img, file, progress, status);
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function FileUpload(file, progress, status) {
-            var xhr = new XMLHttpRequest();
-            this.file = file;
-            this.progress = progress;
-            this.xhr = xhr;
-
-            var self = this;
-            xhr.upload.onloadstart = function (e) {
-                status.innerHTML = "uploading";
-            };
-            xhr.upload.onprogress = function (e) {
-                if (e.lengthComputable) {
-                    self.progress.value = Math.round((e.loaded * 100) / e.total);
-                }
-            };
-            xhr.upload.onload = function (e) {
-                self.progress.value = 100;
-            };
-
-            xhr.open("POST", window.location.href + "upload", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        while (status.firstChild) {
-                            status.removeChild(status.firstChild);
-                        }
-                        var link = document.createElement('a');
-                        link.href = window.location.href + "file/" + file.name;
-                        link.target = "_blank";
-                        var text = document.createTextNode("success");
-                        link.appendChild(text);
-                        status.appendChild(link);
-                    }
-                    else {
-                        status.innerHTML = "fail";
-                    }
-                }
-
-                console.log(xhr.readyState + "," + xhr.status + "," + xhr.responseText)
-            };
-
-            var formData = new FormData();
-            formData.append("file", file, file.name);
-            formData.append("description", "Пользовательский файл");
-
-            xhr.send(formData);
-        }
-
-        function clickFiles() {
-            var el = document.getElementById("formFiles");
-            if (el) {
-                el.click();
-            }
-        }
-
-        window.addEventListener("load", init, false);
-  
-      document.cookie="info="+name+","+passw +";"; 
-        
-     function getcookie(){		
-var str = document.cookie;	
-var arrcookie = str.split(";");	
-var userid;
-var username;
-var arr = arrcookie[0].split("=");
-userid= arr[1];	
-arr = arrcookie[1].split("=");	
-username=arr[1];
-alert("userid的值是："+userid+",username的值是："+username);	
-}
-      
-    </script>
     
 </head>
 <body>
 
-<#list 1..3 as username>
-   <#--循环中的变量出了循环就消失-->
-   ${username}
-</#list>
 
 
 
-${Session["ask"]}
-
-
-
-
-<div class="middle">
-
-   
-    
-    <#if logged_in??>
-    <a  href="/logout">logout</a>
-     
-
-   <#else> 
-   <a  href="/login">login</a>
-    </#if>
-
-   
-  </div>
 
 
 
 
 <br><br>
 <p>
-<center>----------------------华丽的分割线----------------------</center>
+<center>----------------------河南中烟可视化----------------------</center>
 </p>
 <br><br>
 
 
 
   <div class="middle">
-<form>
-    <!--<input type="file" id="files" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">-->
-    <input type="file" id="formFiles" multiple style="display:none" onchange="handleFiles(this.files)">
+<h1 style="padding: 50px 0 20px;"> 数据上传
+         </h1>
+<form id="form1" name="form1" method="post" action="${request.contextPath}/countriesupload" enctype="multipart/form-data">
+ <table border="0" align="center">
+  <tr>
+  
+  <tr>
+   <td>上传文件：</td>
+   <td><input name="file" type="file" size="20"></td>
+  </tr>    
+  <tr>   
+   <td></td><td>
+    <input type="submit" name="submit" value="提交" >
+    <input type="reset" name="reset" value="重置" >
+   </td>
+  </tr>
+
+  
+ </table>
+ 
+
+ 
 </form>
 
-<div>
-    <div id="dropbox" style="margin:30px; width:500px; height:300px; border:1px dotted grey;" onclick="clickFiles()">拖到你的文件，到碗里来。或点我。</div>
-</div>
-
-<table id="preview">
-    <tr>
-        <th>Preview</th>
-        <th>Progress</th>
-        <th>Status</th>
-    </tr>
+ 
 </table>
 
 
-<br><br>
-<p>
-<center>----------------------华丽的分割线----------------------</center>
-</p>
-<br><br>
 
-<div class="middle">
-        
-          <center>
-          <table>
-            
-            <tr >
-                <td><a href="${request.contextPath}/search">去搜索</a></td>
-               
-            </tr>
-            <tr >
-               
-                <td><a href="${request.contextPath}/search">去爬取</a></td>
-               
-            </tr>
-           
-</table>
- <center>
-   </div>
-
-<br><br>
-<p>
-<center>----------------------华丽的分割线----------------------</center>
-</p>
 
 
 
 <div class="wrapper">
     <div class="middle">
-        <h1 style="padding: 50px 0 20px;"> 数据库</h1>
+        <h1 style="padding: 50px 0 20px;"> 数据检索</h1>
 
-        <form action="${request.contextPath}/countries" method="post">
+
+
+      <form action="${request.contextPath}/xiangliao" method="post">
             <table class="gridtable" style="width:100%;">
                 <tr>
-                    <th> 名称：</th>
-                    <td><input type="text" name="countryname"
-                               value="<#if queryParam.countryname??>${queryParam.countryname}</#if>"/></td>
-                    <th> 代码：</th>
-                    <td><input type="text" name="countrycode"
-                               value="<#if queryParam.countrycode??>${queryParam.countrycode}</#if>"/></td>
+                    <th> 化合物名稱：</th>
+                    <td><input type="text" name="huahewumingcheng" </td>
+                             
+                    <th> cas：</th>
+                    <td><input type="text" name="cas"
+                              </td>
                     <td rowspan="2"><input type="submit" value="查询"/></td>
                 </tr>
                 <tr>
@@ -297,6 +108,8 @@ ${Session["ask"]}
                 </tr>
             </table>
         </form>
+
+
     <#if pageInfo??>
         <table class="gridtable" style="width:100%;">
             <tr>
@@ -366,29 +179,67 @@ ${Session["ask"]}
                 </tr>
             </#if>
         </table>
-        <table class="gridtable" style="width:100%;">
-            <thead>
+        
+        <br>
+         <table class="gridtable"  style="width:100%;">
+         <thead>
             <tr>
-                <th colspan="4">查询结果 - [<a href="${request.contextPath}/countries/add">新增 (地区)</a>]</th>
+                
+                <th colspan="30"><h1 style=" 5px 0 5px;"> 数据展示分析 -   </h1>
+                <a href="${request.contextPath}/xiangliao/tubiao"><h1 style=" 10px 0 10px;">雷达图</h1></a>
+               
+                </th>
+            
+               
             </tr>
-            <tr>
-                <th>ID</th>
-                <th> 名</th>
-                <th> 代码</th>
-                <th>操作</th>
-            </tr>
+           
+            
+            
             </thead>
+          </table>
+        
+        
+     
+         <h1 style="padding: 50px 0 20px;"> 数据内容操作
+         </h1>
+        <table class="gridtable" border="10" style="width:100%;">
+            
+            <tr>
+          
+                <th> 序号名</th>
+                <th>  化合物名称  </th>
+                 <th>    CAS号</th>
+                 <th>   英文名称 </th>
+                 <th>    分子式</th>
+                 <th>    香韵类别</th>
+                 <th>    阈值范围</th>
+                 <th>    作用阈值</th>
+                 <th>    分子量</th>
+                 <th>    结构式</th>
+                 <th>操作</th>
+            </tr>
+           
             <tbody>
-                <#list pageInfo.list as country>
+                <#list pageInfo.list as xiangliao>
                 <tr>
-                    <td>${country.id}</td>
-                    <td>${country.countryname}</td>
-                    <td>${country.countrycode}</td>
-                    <td style="text-align:center;">[<a
-                            href="${request.contextPath}/countries/view/${country.id}">修改</a>] -
-                        [<a href="${request.contextPath}/countries/delete/${country.id}">删除</a>]
-                    </td>
+                    <td><#if xiangliao.xuhao??>${xiangliao.xuhao}</#if></td>
+                    <td><#if xiangliao.huahewumingcheng??>${xiangliao.huahewumingcheng}</#if></td>
+                    <td><#if xiangliao.cas??>${xiangliao.cas}</#if></td>
+                    <td><#if xiangliao.yingwenmingcheng??>${xiangliao.yingwenmingcheng}</#if></td>
+                    <td><#if xiangliao.fenzishi??>${xiangliao.fenzishi}</#if></td>
+                    <td><#if xiangliao.xiangyunleibie??>${xiangliao.xiangyunleibie}</#if></td>
+                    <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
+                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
+                    <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
+                    <td> <img src="/files/${xiangliao.huahewumingcheng}.jpg"  alt="${xiangliao.huahewumingcheng}"  height="50" width="50" > 
+                    [<a href="${request.contextPath}/countriesfile/${xiangliao.huahewumingcheng}">下载</a>]-</td>
+                       <td style="text-align:center;">
+                       
+                        [<a href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
+                        [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.id}">删除</a>]
+                       </td>
                 </tr>
+                
                 </#list>
             </tbody>
         </table>
@@ -396,10 +247,10 @@ ${Session["ask"]}
             <tr>
                 <#if pageInfo.hasPreviousPage>
                     <td>
-                        <a href="${request.contextPath}/countries?page=1&rows=${pageInfo.pageSize}&countryname=${queryParam.countryname}&countrycode=${queryParam.countrycode}">首页</a>
+                        <a href="${request.contextPath}/xiangliao?page=1&rows=${pageInfo.pageSize}">首页</a>
                     </td>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.prePage}&rows=${pageInfo.pageSize}&countryname=${queryParam.countryname}&countrycode=${queryParam.countrycode}">前一页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.prePage}&rows=${pageInfo.pageSize}">前一页</a>
                     </td>
                 </#if>
                 <#list pageInfo.navigatepageNums as nav>
@@ -408,16 +259,16 @@ ${Session["ask"]}
                     </#if>
                     <#if nav != pageInfo.pageNum>
                         <td>
-                            <a href="${request.contextPath}/countries?page=${nav}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">${nav}</a>
+                            <a href="${request.contextPath}/xiangliao?page=${nav}&rows=${pageInfo.pageSize}">${nav}</a>
                         </td>
                     </#if>
                 </#list>
                 <#if pageInfo.hasNextPage>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.nextPage}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">下一页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.nextPage}&rows=${pageInfo.pageSize}">下一页</a>
                     </td>
                     <td>
-                        <a href="${request.contextPath}/countries?page=${pageInfo.pages}&rows=${pageInfo.pageSize}&countryname=<#if queryParam.countryname??>${queryParam.countryname}</#if>&countrycode=<#if queryParam.countrycode??>${queryParam.countrycode}</#if>">尾页</a>
+                        <a href="${request.contextPath}/xiangliao?page=${pageInfo.pages}&rows=${pageInfo.pageSize}">尾页</a>
                     </td>
                 </#if>
             </tr>
@@ -429,8 +280,8 @@ ${Session["ask"]}
 
 
 
-<div class="middle"><h1>copyright:信息中心    </h1>18392977827</div>
 
+<h1 style="padding: 50px 0 20px;"> copyright:********************</h1>
 
 
 

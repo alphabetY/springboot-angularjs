@@ -41,14 +41,6 @@ import javax.servlet.http.HttpSession;
 
 
 
-
-
-
-
-
-
-
-
 @Controller
 @EnableWebMvc
 @SpringBootApplication
@@ -115,7 +107,7 @@ public class Application extends SpringBootServletInitializer {
     	
 
     	 model.put("time", new Date());
-    	return "indexj";
+    	return "index";
     }
 
     
