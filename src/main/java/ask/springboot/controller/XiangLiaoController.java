@@ -210,11 +210,11 @@ public class XiangLiaoController {
         	 	
         	 }
         	
-        	
+   
         	
            }
-           
-           lisresult.add(String.valueOf(sum));
+           double summ = Math.log10(sum);
+           lisresult.add(String.valueOf(summ));
         }
        
         
