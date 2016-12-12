@@ -13,6 +13,7 @@ File Encoding         : 65001
 Date: 2016-12-12 10:34:12
 */
 
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

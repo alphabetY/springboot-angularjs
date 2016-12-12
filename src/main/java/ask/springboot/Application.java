@@ -108,6 +108,8 @@ public class Application extends SpringBootServletInitializer {
 
     	 model.put("time", new Date());
     	return "index";
+    	
+    	
     }
 
     
