@@ -4,7 +4,7 @@ import javax.persistence.Column;
 
 public class XiangLiao extends BaseEntity {
 
-	private String xuhao;
+	private int xuhao;
 	private String huahewumingcheng;
 	private String cas;
 	private String yingwenmingcheng;
@@ -16,10 +16,10 @@ public class XiangLiao extends BaseEntity {
 	
 	private String jiegoushi;
 	
-	public  String getXuhao() {
+	public  int getXuhao() {
 		return xuhao;
 	}
-	public void setXuhao(String xuhao) {
+	public void setXuhao(int xuhao) {
 		this.xuhao = xuhao;
 	}
 	public String getHuahewumingcheng() {

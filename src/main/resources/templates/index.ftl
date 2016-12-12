@@ -231,8 +231,15 @@
                     <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
                     <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
                     <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
-                    <td> <img src="/files/${xiangliao.huahewumingcheng}.jpg"  alt="${xiangliao.huahewumingcheng}"  height="50" width="50" > 
-                    [<a href="${request.contextPath}/countriesfile/${xiangliao.huahewumingcheng}">下载</a>]-</td>
+                    <td> 
+                    <#if xiangliao.jiegoushi??> <img src="/files/${xiangliao.jiegoushi}"   height="50" width="50" >
+                   </#if>
+                  <form method="post" action="${request.contextPath}/image/${xiangliao.id}" enctype="multipart/form-data">
+           
+    <input name="file" type="file" size="20" height="50" width="50">
+    <input type="submit" name="submit" value="提交"  height="50" width="50">
+</form>
+</td>
                        <td style="text-align:center;">
                        
                         [<a href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -

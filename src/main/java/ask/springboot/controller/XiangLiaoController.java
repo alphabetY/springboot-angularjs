@@ -130,10 +130,10 @@ public class XiangLiaoController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(XiangLiao xiangliao) {
         ModelAndView result = new ModelAndView("view");
-        String msg = xiangliao.getXuhao() == null ? "新增成功!" : "更新成功!";
+        //String msg = xiangliao.getXuhao() == null ? "新增成功!" : "更新成功!";
         xiangliaoService.update(xiangliao);
         result.addObject("xiangliao", xiangliao);
-        result.addObject("msg", msg);
+        //result.addObject("msg", msg);
         return result;
     }
     

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ask.springboot.model.XiangLiao;
 import ask.springboot.service.XiangLiaoService;
@@ -43,18 +45,18 @@ public class MultipartUploaderController {
 
     //@Value("#{servletContext.getRealPath('/')}")
     
-    protected String uploadPath;
+    protected String uploadPath  ="D:/files";;
     @Autowired
     private XiangLiaoService xiangliaoService;
     
     @RequestMapping(value="/countriesupload", method= RequestMethod.POST)
-    @ResponseBody
-    public void fileUpload(@RequestParam("description") Optional<String> description, @RequestParam("file") MultipartFile file) throws IOException {
+    
+    public ModelAndView fileUpload(@RequestParam("description") Optional<String> description, @RequestParam("file") MultipartFile file ,RedirectAttributes ra) throws IOException {
         log.info(description.toString());
         log.info(file.getOriginalFilename());
         log.info(file.getContentType());
         log.info("" + file.getSize());
-        uploadPath="D:/files";
+    
         final File dest = new File(uploadPath, file.getOriginalFilename());
         log.info(dest.getAbsolutePath());
 
@@ -116,7 +118,7 @@ public class MultipartUploaderController {
             HSSFCell cell=(HSSFCell)itet.next(); 
         	System.out.println(cell.getNumericCellValue()+" ");   
         	
-            xiangliao.setXuhao(String.valueOf(cell.getNumericCellValue()));	
+            xiangliao.setXuhao((int)cell.getNumericCellValue());	
        
             HSSFCell cell1=(HSSFCell)itet.next(); 
             xiangliao.setHuahewumingcheng(cell1.getRichStringCellValue().toString());
@@ -153,40 +155,47 @@ public class MultipartUploaderController {
                }
         }
             
-        }else
-        {
-        	
-        	Object fil=file.getBytes();
-        	
-        	XiangLiao xiangliao =new XiangLiao();
-        	
-        	//xiangliao.setJiegoushi(fil);
-        	
-        	xiangliao.setHuahewumingcheng(file.getOriginalFilename().trim());
-        	System.out.println(file.getOriginalFilename().trim());
-        for(XiangLiao xi : xiangliaoService.getAll())	
-        {
-        	
-        	if((file.getOriginalFilename().trim()).contains(xi.getHuahewumingcheng()))
-        	{
-        		
-        	     //	xi.setJiegoushi(fil);
-        		//xiangliaoService.update(xi);
-        		//System.out.print("sadsadaddddddddd"+fil);
-        	}
-        	
         }
-        	
-        	      	
-        	
-        	
-        	
-        	
-        	
-        }
+        ModelAndView result = new ModelAndView("redirect:/xiangliao");
+        ra.addFlashAttribute("msg", "上传成功!");
+        return result; 
         
     }
 
+    
+    
+    @RequestMapping(value="/image/{id}",method= RequestMethod.POST)
+    public ModelAndView image(@PathVariable("id") Integer id, @RequestParam("file") MultipartFile file,RedirectAttributes ra) throws IllegalStateException, IOException
+    { 
+    	ModelAndView result = new ModelAndView("redirect:/xiangliao");
+    	
+    	final File dest = new File(uploadPath, file.getOriginalFilename());
+        log.info(dest.getAbsolutePath());
+        log.info(file.getOriginalFilename());
+        log.info(file.getContentType());
+        log.info("" + file.getSize());
+        file.transferTo(dest);
+    	
+        XiangLiao xiangliao =new XiangLiao();
+        
+        
+        xiangliao.setId(id);
+        System.out.println("id=="+id);
+        xiangliao.setJiegoushi(file.getOriginalFilename());
+        
+        xiangliaoService.update(xiangliao);
+
+        ra.addFlashAttribute("msg", "上传成功!");
+        return result; 
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
     @RequestMapping(value="/countriesfile/{name:.*}", method= RequestMethod.GET)
     
     public void fileDownload(@PathVariable("name") String name, HttpServletResponse response) throws UnsupportedEncodingException {
