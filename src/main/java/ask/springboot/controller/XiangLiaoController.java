@@ -225,22 +225,16 @@ public class XiangLiaoController {
         return lisresult;
     }
     
+    /*
     @RequestMapping(value="/image/{id}",method = RequestMethod.GET)  
     public void lookImage(@PathVariable int id,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {  
     	  
     	XiangLiao xiangliao = xiangliaoService.getById(id);
-      
-    	
-    	
-    	
+
     	response.setContentType("image/jpeg");  
 
        // response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(xiangliao.getHuahewumingcheng()+".jpg", "UTF-8"));
-       
-      
-       
-       
-       
+
        try {  
     	   
     	   Blob content = (Blob)xiangliao.getJiegoushi(); 
@@ -261,7 +255,7 @@ public class XiangLiaoController {
          
     } 
     
-    
+    */
     
     
     

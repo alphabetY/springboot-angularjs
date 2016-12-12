@@ -13,8 +13,8 @@ public class XiangLiao extends BaseEntity {
 	private String yuzhifanwei;
 	private String zuoyongyuzhi;
 	private String fenziliang;
-	 @Column(name = "jiegoushi")
-	private Object jiegoushi;
+	
+	private String jiegoushi;
 	
 	public  String getXuhao() {
 		return xuhao;
@@ -70,10 +70,10 @@ public class XiangLiao extends BaseEntity {
 	public void setFenziliang(String fenziliang) {
 		this.fenziliang = fenziliang;
 	}
-	public Object getJiegoushi() {
+	public String getJiegoushi() {
 		return jiegoushi;
 	}
-	public void setJiegoushi(Object jiegoushi) {
+	public void setJiegoushi(String jiegoushi) {
 		this.jiegoushi = jiegoushi;
 	}
 	
