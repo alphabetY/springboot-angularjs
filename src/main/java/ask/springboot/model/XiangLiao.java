@@ -1,5 +1,7 @@
 package ask.springboot.model;
 
+import javax.persistence.Column;
+
 public class XiangLiao extends BaseEntity {
 
 	private String xuhao;
@@ -11,8 +13,10 @@ public class XiangLiao extends BaseEntity {
 	private String yuzhifanwei;
 	private String zuoyongyuzhi;
 	private String fenziliang;
-	private String jiegoushi;
-	public String getXuhao() {
+	 @Column(name = "jiegoushi")
+	private Object jiegoushi;
+	
+	public  String getXuhao() {
 		return xuhao;
 	}
 	public void setXuhao(String xuhao) {
@@ -66,10 +70,10 @@ public class XiangLiao extends BaseEntity {
 	public void setFenziliang(String fenziliang) {
 		this.fenziliang = fenziliang;
 	}
-	public String getJiegoushi() {
+	public Object getJiegoushi() {
 		return jiegoushi;
 	}
-	public void setJiegoushi(String jiegoushi) {
+	public void setJiegoushi(Object jiegoushi) {
 		this.jiegoushi = jiegoushi;
 	}
 	

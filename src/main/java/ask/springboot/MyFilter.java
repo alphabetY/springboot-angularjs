@@ -13,6 +13,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
+/*
 @WebFilter(filterName="myFilter",urlPatterns="/*")
 public class MyFilter implements Filter {
 
@@ -54,3 +56,4 @@ public class MyFilter implements Filter {
     }
 
 }
+*/

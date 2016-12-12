@@ -54,9 +54,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+       registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
        
         registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
+        
+        registry.addResourceHandler("files/**").addResourceLocations("file:D:/files/");
+        
+ 
     }
    
    // @Override
@@ -91,10 +95,19 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	        resolver.setPrefix("/templates/");
 	        resolver.setSuffix(".ftl");
 	        resolver.setExposeRequestAttributes(true);
+	        
 	        resolver.setExposeSessionAttributes(true);
 	        resolver.setExposeSpringMacroHelpers(true);  
 	        resolver.setOrder(2);  
 	        registry.viewResolver(resolver);
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
          	}
    
    

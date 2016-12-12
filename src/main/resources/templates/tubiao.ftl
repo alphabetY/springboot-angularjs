@@ -46,8 +46,8 @@
 
                 option = {
                     title : {
-                        text: '预算 vs 开销（Budget vs spending）',
-                        subtext: '纯属虚构'
+                        text: '假数据',
+                        subtext: '假数据'
                     },
                     tooltip : {
                         trigger: 'axis'
@@ -56,7 +56,7 @@
                         orient : 'vertical',
                         x : 'right',
                         y : 'bottom',
-                        data:['预算分配（Allocated Budget）']
+                        data:['分布']
                     },
                     toolbox: {
                         show : true,
@@ -70,21 +70,21 @@
                     polar : [
                        {
                            indicator : [
-                               { text: '1', max: 6000},
-                               { text: '2', max: 6000},
-                               { text: '3', max: 6000},
-                               { text: '4', max: 6000},
-                               { text: '5', max: 6000},
-                               { text: '6', max: 6000},
-                               { text: '7', max: 6000},
-                               { text: '8', max: 6000},
-                               { text: '9', max: 6000},
-                               { text: '10', max: 6000},
-                               { text: '11', max: 6000},
-                               { text: '12', max: 6000},
-                               { text: '13', max: 6000},
-                               { text: '14', max: 6000},
-                               { text: '15', max: 6000},
+                               { text: '（清）青香', max: 4000000000000000},
+                               { text: '豆香', max: 4000000000000000},
+                               { text: '膏香', max: 4000000000000000},
+                               { text: '果香', max: 4000000000000000},
+                               { text: '花香', max: 4000000000000000},
+                               { text: '坚果香', max: 4000000000000000},
+                               { text: '焦甜香', max: 4000000000000000},
+                               { text: '木香', max: 4000000000000000},
+                               { text: '奶香韵', max: 4000000000000000},
+                               { text: '酸香', max: 4000000000000000},
+                               { text: '甜香', max: 4000000000000000},
+                               { text: '辛香', max: 4000000000000000},
+                               { text: '药香', max: 4000000000000000},
+                               { text: '脂蜡香', max: 4000000000000000},
+                               
                                
                             ]
                         }
@@ -92,12 +92,12 @@
                     calculable : true,
                     series : [
                         {
-                            name: '预算 vs 开销（Budget vs spending）',
+                            name: '假数据',
                             type: 'radar',
                             data : [
                                 {
                                     value : nn,
-                                    name : '预算分配（Allocated Budget）'
+                                    name : '比值和（Allocated Budget）'
                                 },
                                 
                             ]

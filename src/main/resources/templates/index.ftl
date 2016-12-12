@@ -4,8 +4,8 @@
 <head>
     <title>测试页面</title>
 
-    <script src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
-    <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
     
     <style type="text/css">
         .pageDetail {
@@ -39,21 +39,6 @@
 
 
 
-<div class="middle">
-
-   
-    
-    <#if logged_in??>
-    <a  href="/logout">logout</a>
-     
-
-   <#else> 
-   <a  href="/login">login</a>
-    </#if>
-
-   
-  </div>
-
 
 
 
@@ -66,14 +51,15 @@
 
 
   <div class="middle">
-
+<h1 style="padding: 50px 0 20px;"> 数据上传
+         </h1>
 <form id="form1" name="form1" method="post" action="${request.contextPath}/countriesupload" enctype="multipart/form-data">
  <table border="0" align="center">
   <tr>
   
   <tr>
    <td>上传文件：</td>
-   <td><input name="file" type="file" size="20" ></td>
+   <td><input name="file" type="file" size="20"></td>
   </tr>    
   <tr>   
    <td></td><td>
@@ -99,7 +85,7 @@
 
 <div class="wrapper">
     <div class="middle">
-        <h1 style="padding: 50px 0 20px;"> 数据展示</h1>
+        <h1 style="padding: 50px 0 20px;"> 数据检索</h1>
 
 
 
@@ -194,17 +180,17 @@
             </#if>
         </table>
         
-        
+        <br>
          <table class="gridtable"  style="width:100%;">
          <thead>
             <tr>
-                <th colspan="11">展示 - [<a href="${request.contextPath}/xiangliao/tubiao">雷达图</a>]
-                [<a href="${request.contextPath}/xiangliao/tubiao">饼图</a>]
-                 [<a href="${request.contextPath}/xiangliao/tubiao">柱状图</a>]
-                 [<a href="${request.contextPath}/xiangliao/tubiao">多维图</a>]
-                 [<a href="${request.contextPath}/xiangliao/tubiao">层次图</a>]
+                
+                <th colspan="30"><h1 style=" 5px 0 5px;"> 数据展示分析 -   </h1>
+                <a href="${request.contextPath}/xiangliao/tubiao"><h1 style=" 10px 0 10px;">雷达图</h1></a>
+               
                 </th>
-                 
+            
+               
             </tr>
            
             
@@ -213,8 +199,9 @@
           </table>
         
         
-        <br>
-        
+     
+         <h1 style="padding: 50px 0 20px;"> 数据内容操作
+         </h1>
         <table class="gridtable" border="10" style="width:100%;">
             
             <tr>
@@ -244,12 +231,15 @@
                     <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
                     <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
                     <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
-                    <td><#if xiangliao.jiegoushi??>${xiangliao.jiegoushi}</#if></td>
-                       <td style="text-align:center;">[<a
-                            href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
+                    <td> <img src="/files/${xiangliao.huahewumingcheng}.jpg"  alt="${xiangliao.huahewumingcheng}"  height="50" width="50" > 
+                    [<a href="${request.contextPath}/countriesfile/${xiangliao.huahewumingcheng}">下载</a>]-</td>
+                       <td style="text-align:center;">
+                       
+                        [<a href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
                         [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.id}">删除</a>]
-                    </td>
+                       </td>
                 </tr>
+                
                 </#list>
             </tbody>
         </table>
@@ -291,7 +281,7 @@
 
 
 
-
+<h1 style="padding: 50px 0 20px;"> copyright:********************</h1>
 
 
 

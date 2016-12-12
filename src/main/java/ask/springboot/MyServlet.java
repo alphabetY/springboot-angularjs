@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/*
 @WebServlet(urlPatterns="/myservlet", description="Servlet的说明") // 不指定name的情况下，name默认值为类全路径，即org.springboot.sample.servlet.MyServlet2
 public class MyServlet extends HttpServlet{
 
@@ -39,3 +39,4 @@ public class MyServlet extends HttpServlet{
     }
 
 }
+*/

@@ -17,9 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import ask.springboot.security.CustomUserDetailsService;
 
-/**
- * @author trungnguyen
- */
+
 @Order(Ordered.LOWEST_PRECEDENCE - 8)
 @Configuration
 //@EnableWebMvcSecurity
@@ -87,28 +85,32 @@ public class Security extends WebSecurityConfigurerAdapter {
 		 http.addFilterBefore
 		*/
 
-		 http
-	       .authorizeRequests()
-	       .antMatchers("/login")
-	        .permitAll();
-		 http
-	        .formLogin().failureUrl("/login?error")
-	        .loginPage("/login")
-	        .defaultSuccessUrl("/xiangliao")
-	        .permitAll()
-	        .and()
-	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(
-	        "/login")
-	        .permitAll();
+		// http
+	    //   .authorizeRequests()
+	    //   .antMatchers("/login")
+	     //   .permitAll();
+		
+		 //http
+	     //   .formLogin().failureUrl("/login?error")
+	     //   .loginPage("/login")
+	     //   .defaultSuccessUrl("/xiangliao")
+	     //   .permitAll()
+	     //   .and()
+	     //   .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(
+	      //  "/login")
+	      //  .permitAll();
 		 
-        http.httpBasic().and()
-            .csrf().disable()
-            .authorizeRequests()
-            //.antMatchers(HttpMethod.GET, "/rest/contacts*/**").permitAll()
-           // .antMatchers(HttpMethod.GET, "/rest/photos*/**").permitAll()
-           // .antMatchers("/rest/**").authenticated()
-            //.antMatchers("/countries").hasAuthority("admin")
-            .antMatchers("/jsp/**").hasAuthority("admin")
-            .anyRequest().permitAll();
+		 
+		 http.httpBasic().and()
+         .csrf().disable()
+         .authorizeRequests()
+         //.antMatchers(HttpMethod.GET, "/rest/contacts*/**").permitAll()
+        // .antMatchers(HttpMethod.GET, "/rest/photos*/**").permitAll()
+        // .antMatchers("/rest/**").authenticated()
+         //.antMatchers("/countries").hasAuthority("admin")
+         .antMatchers("/xiangliao/**").hasAuthority("admin")
+         .anyRequest().permitAll();
+		 
+	
     }
 }

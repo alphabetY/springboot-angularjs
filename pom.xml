@@ -8,7 +8,10 @@
     <groupId>ask.mybatis</groupId>
     <artifactId>mybatis-spring-boot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+     <packaging>war</packaging>
 
+	
+    
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,7 +29,9 @@
         <javax.inject.version>1</javax.inject.version>
          <lucene.version>4.6.0</lucene.version>
         
-        
+     
+<start-class>ask.springboot.Application</start-class>
+       
         
         
     </properties>
@@ -82,6 +87,12 @@
         </dependency>
 
         <!-- 1 -->
+        
+         <dependency>
+           <groupId>javax.servlet</groupId>
+           <artifactId>javax.servlet-api</artifactId>
+           <scope>provided</scope>
+       </dependency>
         <dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -91,12 +102,13 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
+			
 		</dependency>
 		<!-- 5 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<scope>provided</scope> 
 		</dependency>
            <dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -171,11 +183,31 @@
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
         </dependency>
-     
+       
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-websocket</artifactId>
+    <version>1.4.0.RELEASE</version>
+   </dependency>
+
+<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+<dependency>
+    <groupId>net.sf.json-lib</groupId>
+    <artifactId>json-lib</artifactId>
+    <version>2.4</version>
+    <classifier>jdk15</classifier>
+</dependency>
+
+
+
 
     </dependencies>
 
@@ -184,6 +216,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                        
+                
                 <dependencies>
                     <dependency>
                         <groupId>org.springframework</groupId>
@@ -192,6 +226,22 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            
+            <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+    <configuration>
+        <warName>ask</warName>
+    </configuration>
+</plugin>
+            
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<useSystemClassLoader>false</useSystemClassLoader>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project>

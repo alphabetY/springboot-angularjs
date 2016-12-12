@@ -24,11 +24,16 @@ import ask.springboot.model.XiangLiao;
 import ask.springboot.service.XiangLiaoService;
 
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Optional;
 
@@ -53,14 +58,13 @@ public class MultipartUploaderController {
         final File dest = new File(uploadPath, file.getOriginalFilename());
         log.info(dest.getAbsolutePath());
 
+        
         file.transferTo(dest);
         
+        if(file.getOriginalFilename().trim().contains("xls"))
+        {
         xiangliaoService.deleteAll();
-        
-        
-      
-        
-       
+
         InputStream ips=new FileInputStream(dest.getAbsolutePath());   
         HSSFWorkbook wb=new HSSFWorkbook(ips);   
         HSSFSheet sheet=wb.getSheetAt(0);   
@@ -149,20 +153,78 @@ public class MultipartUploaderController {
                }
         }
             
-
+        }else
+        {
+        	
+        	Object fil=file.getBytes();
+        	
+        	XiangLiao xiangliao =new XiangLiao();
+        	
+        	//xiangliao.setJiegoushi(fil);
+        	
+        	xiangliao.setHuahewumingcheng(file.getOriginalFilename().trim());
+        	System.out.println(file.getOriginalFilename().trim());
+        for(XiangLiao xi : xiangliaoService.getAll())	
+        {
+        	
+        	if((file.getOriginalFilename().trim()).contains(xi.getHuahewumingcheng()))
+        	{
+        		
+        	     //	xi.setJiegoushi(fil);
+        		//xiangliaoService.update(xi);
+        		//System.out.print("sadsadaddddddddd"+fil);
+        	}
+        	
+        }
+        	
+        	      	
+        	
+        	
+        	
+        	
+        	
+        }
+        
     }
 
     @RequestMapping(value="/countriesfile/{name:.*}", method= RequestMethod.GET)
-    @ResponseBody
-    public FileSystemResource fileDownload(@PathVariable("name") String name, HttpServletResponse response) {
-        final File source = new File(uploadPath, name);
-        if (!source.exists()) {
-            response.setStatus(HttpStatus.NOT_FOUND.value());
-            return null;
-        }
+    
+    public void fileDownload(@PathVariable("name") String name, HttpServletResponse response) throws UnsupportedEncodingException {
+        final File source = new File("D:/files", name+".jpg");
+       
 
         log.info("downloading " + source.getAbsolutePath());
-        return new FileSystemResource(source);
+        
+        
+        
+        
+        
+        response.setContentType("image/jpeg");  
+
+        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(name+".jpg", "UTF-8"));
+        
+       
+        
+        
+        
+        try {  
+     	   
+
+            OutputStream outputStream=response.getOutputStream();  
+         
+            InputStream in   =  new FileInputStream(source);
+            int len=0;  
+            byte[]buf=new byte[1024];  
+            while((len=in.read(buf,0,1024))!=-1){  
+                outputStream.write(buf, 0, len);  
+            }  
+            outputStream.close();  
+        } catch (IOException e) {  
+            // TODO Auto-generated catch block  
+            e.printStackTrace();  
+        }  
+        
+   
     }
     
     

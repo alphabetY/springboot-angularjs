@@ -33,13 +33,13 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-    mvc:
-       view:
-         prefix: /WEB-INF/
-         suffix: .jsp
+#   mvc:
+#     view:
+#         prefix: /WEB-INF/
+#         suffix: .jsp
     freemarker:
-       cache: true
-       request-context-attribute: request
+      cache: false
+      request-context-attribute: request
         
 
 #以下属性不可用

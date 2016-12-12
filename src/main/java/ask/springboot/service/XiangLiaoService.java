@@ -48,7 +48,7 @@ public class XiangLiaoService {
     @Autowired
     private XiangLiaoMapper xiangliaoMapper;
 
-    
+   
     
     public List<XiangLiao> getAll() {
         
