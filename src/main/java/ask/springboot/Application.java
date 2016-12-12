@@ -46,7 +46,7 @@ import javax.servlet.http.HttpSession;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ServletComponentScan
-
+//12.12
 
 public class Application extends SpringBootServletInitializer {
 	//final  String LOGGED_IN = "logged_in";
