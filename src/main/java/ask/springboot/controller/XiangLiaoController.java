@@ -225,11 +225,11 @@ public class XiangLiaoController {
         return lisresult;
     }
     
-    /*
-    @RequestMapping(value="/image/{id}",method = RequestMethod.GET)  
-    public void lookImage(@PathVariable int id,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {  
+   
+    @RequestMapping(value="/ima")  
+    public void lookImage(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {  
     	  
-    	XiangLiao xiangliao = xiangliaoService.getById(id);
+
 
     	response.setContentType("image/jpeg");  
 
@@ -237,25 +237,25 @@ public class XiangLiaoController {
 
        try {  
     	   
-    	   Blob content = (Blob)xiangliao.getJiegoushi(); 
+    	  // Blob content = (Blob)xiangliao.getJiegoushi(); 
            OutputStream outputStream=response.getOutputStream();  
-           InputStream in=null;  
-           in=content.getBinaryStream();
-          // InputStream in   =  new FileInputStream("D:/files/甲基环戊烯酮醇.jpg");
+          // InputStream in=null;  
+           //in=content.getBinaryStream();
+           InputStream in   =  new FileInputStream("D:/files/image001.png");
            int len=0;  
            byte[]buf=new byte[1024];  
            while((len=in.read(buf,0,1024))!=-1){  
                outputStream.write(buf, 0, len);  
            }  
            outputStream.close();  
-       } catch (IOException | SQLException e) {  
+       } catch (IOException e) {  
            // TODO Auto-generated catch block  
            e.printStackTrace();  
        }  
          
     } 
     
-    */
+  
     
     
     

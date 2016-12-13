@@ -33,6 +33,7 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @Transient
     private Integer page = 1;
 

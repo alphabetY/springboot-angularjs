@@ -8,9 +8,12 @@
     <input type="hidden" name="id" value="<#if xiangliao.id??>${xiangliao.id}</#if>"/>
     <table class="gridtable" style="width:800px;">
         <tr>
-            <th colspan="7"> 信息 - [<a href="${request.contextPath}/xiangliao">返回</a>]</th>
+            <th colspan="9> 信息 - [<a href="${request.contextPath}/xiangliao">返回</a>]</th>
         </tr>
         <tr>
+            <th> 序号：</th>
+            <td><input type="text" name="xuhao" value="${xiangliao.xuhao}"/>
+            </td>
             <th> 分子式：</th>
             <td><input type="text" name="fenzishi" value="${xiangliao.fenzishi}"/>
             </td>

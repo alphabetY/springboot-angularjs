@@ -38,7 +38,7 @@ public class MainController {
 		ModelAndView modelAndView = new ModelAndView();  
 		
 
-		if (username.equals("admin") && password.equals("admin")) {
+		if (username.equals("admin") && password.equals("admin123")) {
 			 modelAndView.addObject("name", username);  
 			 modelAndView.setViewName("chat");  
 		} else {

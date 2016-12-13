@@ -26,10 +26,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ask.mybatis.springboot.mapper.XiangLiaoMapper">
 
+<!--  
+<resultMap id="attachmentResultMap" type="attachment">   
+	<result property="id" column="id"/>   
+	<result property="group" column="groupId"/>
+	<result property="name" column="fileName" />
+	<result property="type" column="fileType" />
+	<result property="size" column="fileSize" />
+	<result property="author" column="author" />
+	<result property="content" column="content" jdbcType="BLOB" />
+</resultMap>
+<insert id="insertAttachment" parameterType="attachment">
+	insert into bop_attachment (id,filename,filetype,filesize,author,content,groupid)
+	values(#{id},#{name},#{type},#{size},#{author},empty_blob(),#{group})
+</insert>
 
-
-
-
+-->
 
 
 

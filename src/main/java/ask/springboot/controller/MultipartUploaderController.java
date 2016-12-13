@@ -70,7 +70,7 @@ public class MultipartUploaderController {
         InputStream ips=new FileInputStream(dest.getAbsolutePath());   
         HSSFWorkbook wb=new HSSFWorkbook(ips);   
         HSSFSheet sheet=wb.getSheetAt(0);   
-
+/*
         for(Iterator ite=sheet.rowIterator();ite.hasNext();){   
             HSSFRow row=(HSSFRow)ite.next();   
             System.out.println();   
@@ -102,7 +102,7 @@ public class MultipartUploaderController {
             }     
             }   
         }   
-      
+     */ 
      int i=0;
         
         for(Iterator ite=sheet.rowIterator();ite.hasNext();)
@@ -110,14 +110,19 @@ public class MultipartUploaderController {
         	i++;
         	 XiangLiao xiangliao =new XiangLiao();
         	 
+        	 xiangliao.setId(i);
+        	 
             HSSFRow row=(HSSFRow)ite.next();   
-            System.out.println("--------------");   
+ 
             Iterator itet=row.cellIterator();
+            
+           
+            
             if(i!=1){
             	
             HSSFCell cell=(HSSFCell)itet.next(); 
-        	System.out.println(cell.getNumericCellValue()+" ");   
-        	
+        	  
+        	System.out.println(cell.getNumericCellValue());
             xiangliao.setXuhao((int)cell.getNumericCellValue());	
        
             HSSFCell cell1=(HSSFCell)itet.next(); 
@@ -125,8 +130,10 @@ public class MultipartUploaderController {
                 
             
             HSSFCell cell2=(HSSFCell)itet.next(); 
-            xiangliao.setCAS(String.valueOf(cell2.getRichStringCellValue().toString()));
-            
+            if(cell2.getCellType()==HSSFCell.CELL_TYPE_STRING)
+            { xiangliao.setCAS(String.valueOf(cell2.getRichStringCellValue().toString()));}
+            else if(cell2.getCellType()==HSSFCell.CELL_TYPE_NUMERIC)
+            {xiangliao.setCAS(String.valueOf(cell2.getNumericCellValue()));}
             
             HSSFCell cell3=(HSSFCell)itet.next(); 
             xiangliao.setYingwenmingchen(cell3.getRichStringCellValue().toString());
