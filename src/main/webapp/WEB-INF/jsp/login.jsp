@@ -9,11 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网络聊天室</title>
-<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/login.css"/>
+<link rel="stylesheet" type="text/css" href="/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="/css/login.css"/>
 </head>
 <body>
-<%=basePath%>
+
     <div id="loginBox">
         <h1>Login Your Account</h1>
 

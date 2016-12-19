@@ -125,7 +125,17 @@ public class XiangLiaoController {
         ra.addFlashAttribute("msg", "删除成功!");
         return result;
     }
+    @RequestMapping(value = "/delete")
+    public ModelAndView deleteall( RedirectAttributes ra) {
+        ModelAndView result = new ModelAndView("redirect:/xiangliao");
+       
+   
+   
+        xiangliaoService.deleteAll();
 
+        ra.addFlashAttribute("msg", "删除全部成功!");
+        return result;
+    }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(XiangLiao xiangliao) {
@@ -140,6 +150,18 @@ public class XiangLiaoController {
     @RequestMapping(value = "/tubiao")
     public ModelAndView tubiao1(XiangLiao xiangliao) {
         ModelAndView result = new ModelAndView("tubiao");
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         return result;
     }

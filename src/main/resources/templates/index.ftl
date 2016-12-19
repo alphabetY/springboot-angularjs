@@ -4,8 +4,8 @@
 <head>
     <title>测试页面</title>
 
-    <script src="static/js/jquery-1.11.1.min.js"></script>
-    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     
     <style type="text/css">
         .pageDetail {
@@ -94,10 +94,13 @@
                 <tr>
                     <th> 化合物名稱：</th>
                     <td><input type="text" name="huahewumingcheng" </td>
-                             
+                     <!--      
                     <th> cas：</th>
-                    <td><input type="text" name="cas"
-                              </td>
+                    <td><input type="text" name="cas"</td>
+                      -->          
+                    <th> 香韵类别：</th>
+                    <td><input type="text" name="xiangyunleibie"</td>
+                             
                     <td rowspan="2"><input type="submit" value="查询"/></td>
                 </tr>
                 <tr>
@@ -202,8 +205,9 @@
      
          <h1 style="padding: 50px 0 20px;"> 数据内容操作
          </h1>
+        <center>[<a href="${request.contextPath}/xiangliao/delete/">删除全部</a>]</center>
         <table class="gridtable" border="10" style="width:100%;">
-            
+          
             <tr>
           
                 <th> 序号名</th>
@@ -236,7 +240,7 @@
                    </#if>
                   <form method="post" action="${request.contextPath}/image/${xiangliao.id}" enctype="multipart/form-data">
            
-    <input name="file" type="file" size="20" height="50" width="50">
+    <input name="file" type="file" size="20" height="20" width="50">
     <input type="submit" name="submit" value="提交"  height="50" width="50">
 </form>
 </td>

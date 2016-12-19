@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-     <script src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
+     <script src="${request.contextPath}/js/jquery-1.11.1.min.js"></script>
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->

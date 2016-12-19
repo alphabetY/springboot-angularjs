@@ -65,7 +65,8 @@ public class XiangLiaoService {
     	
     	String cas=request.getParameter("cas");
     	
-   	
+    	String xiangyunleibie=request.getParameter("xiangyunleibie");
+    	
     	Example example = new Example(XiangLiao.class);
         Example.Criteria criteria = example.createCriteria();
         
@@ -77,6 +78,9 @@ public class XiangLiaoService {
         }
         if (StringUtil.isNotEmpty(cas)) {
             criteria.andLike("cas", "%" + cas+ "%");
+        }
+        if (StringUtil.isNotEmpty(xiangyunleibie)) {
+            criteria.andLike("xiangyunleibie", "%" + xiangyunleibie+ "%");
         }
        // if (xiangliao.getXuhao() != null) {
        //     criteria.andEqualTo("xuhao", xiangliao.getXuhao());

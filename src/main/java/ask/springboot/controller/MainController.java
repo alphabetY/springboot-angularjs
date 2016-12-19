@@ -31,6 +31,11 @@ public class MainController {
 		return "login";
 	}
 	
+	//@RequestMapping("demo")
+	//public String gtdemo() {
+	//	return "demo";
+	//}
+	
 	@RequestMapping("loginServer")
 	public ModelAndView login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {

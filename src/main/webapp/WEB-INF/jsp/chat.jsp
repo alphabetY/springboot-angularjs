@@ -9,8 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网络聊天室</title>
-<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/chat.css"/>
+<link rel="stylesheet" type="text/css" href="/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="/css/chat.css"/>
 </head>
 <body>
     
@@ -39,9 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</section>
 
-		<script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="static/js/chat.js"></script>
-		<script type="text/javascript" src="static/js/initialize.js"></script>
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/js/chat.js"></script>
+		<script type="text/javascript" src="/js/initialize.js"></script>
 </body>
 </html>
 

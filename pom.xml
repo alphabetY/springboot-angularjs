@@ -8,7 +8,7 @@
     <groupId>ask.mybatis</groupId>
     <artifactId>mybatis-spring-boot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-     <packaging>war</packaging>
+    
 
 	
     
@@ -206,7 +206,12 @@
     <classifier>jdk15</classifier>
 </dependency>
 
-
+<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.4</version>
+</dependency>
 
 
     </dependencies>
@@ -234,7 +239,7 @@
         <warName>ask</warName>
     </configuration>
 </plugin>
-            
+            <!--  
             <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -242,6 +247,7 @@
 					<useSystemClassLoader>false</useSystemClassLoader>
 				</configuration>
 			</plugin>
+			-->
         </plugins>
     </build>
 </project>

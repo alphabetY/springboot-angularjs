@@ -103,12 +103,12 @@ public class Application extends SpringBootServletInitializer {
     }
 
     */
-    @RequestMapping("jsp")
+    @RequestMapping("demo")
     public String welcome(Map<String, Object> model) {
     	
 
     	 model.put("time", new Date());
-    	return "index";
+    	 return "login";
     	
     	
     }

@@ -102,6 +102,7 @@ public class MultipartUploaderController {
             }     
             }   
         }   
+       
      */ 
      int i=0;
         
@@ -166,7 +167,7 @@ public class MultipartUploaderController {
         ModelAndView result = new ModelAndView("redirect:/xiangliao");
         ra.addFlashAttribute("msg", "上传成功!");
         return result; 
-        
+       
     }
 
     

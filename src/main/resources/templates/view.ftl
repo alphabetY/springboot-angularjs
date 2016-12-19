@@ -1,14 +1,14 @@
 <html>
 <head>
     <title> 信息</title>
-    <link href="${request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="${request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body style="margin-top:50px;overflow: hidden;">
 <form action="${request.contextPath}/xiangliao/save" method="post">
     <input type="hidden" name="id" value="<#if xiangliao.id??>${xiangliao.id}</#if>"/>
     <table class="gridtable" style="width:800px;">
-        <tr>
-            <th colspan="9> 信息 - [<a href="${request.contextPath}/xiangliao">返回</a>]</th>
+         <tr>
+            <th colspan="9> [ <a href=" ${request.contextPath}/xiangliao" >  修改  </a> [ <a href=" ${request.contextPath}/xiangliao" >  返回主页  </a> ]  </th>
         </tr>
         <tr>
             <th> 序号：</th>
