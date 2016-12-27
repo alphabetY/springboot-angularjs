@@ -31,14 +31,22 @@
         });
 
     </script>
-
-    
-    
-    
     
 </head>
 <body >
 
+
+<DIV class="menulist_2"> 
+<UL> 
+<LI><A class="menulist_select" HREF="#1">数据上传</A></LI> 
+<LI><A class="menulist_select" HREF="#2">数据检索</A></LI> 
+<LI><A class="menulist_select" HREF="#3">数据展示分析</A></LI> 
+<LI><A class="menulist_select" HREF="#4">数据内容操作</A></LI> 
+
+</UL> 
+</DIV> 
+
+<a name="1"></a>
 
 
 
@@ -53,7 +61,7 @@
 
 
   <div class="middle" >
-<h1 style="padding: 50px 0 20px;"> 数据上传 </h1>
+<h1 style="padding: 50px 0 20px;"> <a name="1"></a>数据上传 </h1>
         
 <form id="form1" name="form1" method="post" action="${request.contextPath}/countriesupload" enctype="multipart/form-data">
  <table border="0" align="center">
@@ -87,7 +95,7 @@
 
 <div class="wrapper">
     <div class="middle">
-        <h1 style="padding: 50px 0 20px;"> 数据检索</h1>
+        <h1 style="padding: 50px 0 20px;"> <a name="2"></a>数据检索</h1>
 
 
 
@@ -190,7 +198,7 @@
          <thead>
             <tr>
                 
-                <th colspan="30"><h1 style=" 5px 0 5px;"> 数据展示分析 -   </h1>
+                <th colspan="30"><h1 style=" 5px 0 5px;"><a name="3"></a> 数据展示分析 -   </h1>
                 <a href="${request.contextPath}/xiangliao/tubiao"><h1 style=" 10px 0 10px;">雷达图</h1></a>
                
                 </th>
@@ -205,24 +213,13 @@
         
         
      
-         <h1 style="padding: 50px 0 20px;"> 数据内容操作
+         <h1 style="padding: 50px 0 20px;"> <a name="4"></a>数据内容操作
          </h1>
-         
-       <form method="post" action="${request.contextPath}/xiangliao/deletesome/" >
-      
-        <center>
-       
-         <button> <a href="${request.contextPath}/xiangliao/delete/" style="display:none">删除全部</a>  </button>
-         
-         <input type="submit" value="删除部分" style="display:none" />
-        
-         <button> <a href="${request.contextPath}/xiangliao/view/" style="display:none">插入</a>  </button>
-     
-        </center>
+        <center>[<a href="${request.contextPath}/xiangliao/delete/">删除全部</a>]</center>
         <table class="gridtable" border="10" style="width:100%;">
           
             <tr>
-                <th style="display:none"> 复选框</th>
+          
                 <th> 序号名</th>
                 <th>  化合物名称  </th>
                  <th>    CAS号</th>
@@ -239,12 +236,7 @@
             <tbody>
                 <#list pageInfo.list as xiangliao>
                 <tr>
-                    <td style="display:none">
-                    
-                    <#if xiangliao.id??><input type="checkbox" name="checkbox" value="${xiangliao.id}" /></#if>
-                    
-                    </td>
-                    <td ><#if xiangliao.xuhao??>${xiangliao.xuhao}</#if></td>
+                    <td><#if xiangliao.xuhao??>${xiangliao.xuhao}</#if></td>
                     <td><#if xiangliao.huahewumingcheng??>${xiangliao.huahewumingcheng}</#if></td>
                     <td><#if xiangliao.cas??>${xiangliao.cas}</#if></td>
                     <td><#if xiangliao.yingwenmingcheng??>${xiangliao.yingwenmingcheng}</#if></td>
@@ -254,31 +246,24 @@
                     <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
                     <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
                     <td> 
-                     <#if xiangliao.jiegoushi??> <img src="/files/${xiangliao.jiegoushi}"   height="50" width="50" >
-                     </#if>
-                         <form method="post" action="${request.contextPath}/image/${xiangliao.id}" enctype="multipart/form-data">
+                    <#if xiangliao.jiegoushi??> <img src="/files/${xiangliao.jiegoushi}"   height="50" width="50" >
+                   </#if>
+                  <form method="post" action="${request.contextPath}/image/${xiangliao.id}" enctype="multipart/form-data">
            
-                          <input name="file" type="file" size="20" height="20" width="50">
-                          <input type="submit" name="submit" value="提交"  height="50" width="50">
-                        </form>
-                     </td>
+    <input name="file" type="file" size="20" height="20" width="50">
+    <input type="submit" name="submit" value="提交"  height="50" width="50">
+</form>
+</td>
                        <td style="text-align:center;">
                        
                         [<a href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
                         [<a href="${request.contextPath}/xiangliao/delete/${xiangliao.id}">删除</a>]
                        </td>
-                       
-                       
                 </tr>
                 
                 </#list>
             </tbody>
         </table>
-        
-     
-         
-         </from>
-        
         <table class="gridtable" style="width:100%;text-align: center;">
             <tr>
                 <#if pageInfo.hasPreviousPage>

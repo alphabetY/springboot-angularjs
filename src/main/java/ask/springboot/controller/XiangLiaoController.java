@@ -101,10 +101,15 @@ public class XiangLiaoController {
         return result;
     }
     
-  
+    @RequestMapping(value = "/view")
+    public ModelAndView view() {
+        ModelAndView result = new ModelAndView("viewcharu");
+       
+        return result;
+    }
 
     @RequestMapping(value = "/view/{id}")
-    public ModelAndView view(@PathVariable Integer id) {
+    public ModelAndView viewid(@PathVariable Integer id) {
         ModelAndView result = new ModelAndView("view");
         XiangLiao xiangliao = xiangliaoService.getById(id);
         
@@ -137,8 +142,42 @@ public class XiangLiaoController {
         return result;
     }
     
+    @RequestMapping(value = "/deletesome")
+    public ModelAndView deletesome( @RequestParam("checkbox")   Integer[] ids,RedirectAttributes ra) {
+        ModelAndView result = new ModelAndView("redirect:/xiangliao");
+       
+   
+        	for(int i: ids)
+        	{System.out.print(i);
+        	
+        	xiangliaoService.deleteById(i);
+        	
+        	}
+        
+        
+        
+   
+       // xiangliaoService.deleteAll();
+
+        ra.addFlashAttribute("msg", "删除部分成功!");
+        return result;
+    }
+    
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(XiangLiao xiangliao) {
+        ModelAndView result = new ModelAndView("view");
+        //String msg = xiangliao.getXuhao() == null ? "新增成功!" : "更新成功!";
+        
+        xiangliaoService.update(xiangliao);
+        
+        result.addObject("xiangliao", xiangliao);
+        //result.addObject("msg", msg);
+        return result;
+    }
+    
+    
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ModelAndView update(XiangLiao xiangliao) {
         ModelAndView result = new ModelAndView("view");
         //String msg = xiangliao.getXuhao() == null ? "新增成功!" : "更新成功!";
         xiangliaoService.update(xiangliao);

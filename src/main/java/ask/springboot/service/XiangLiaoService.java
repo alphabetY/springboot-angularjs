@@ -100,10 +100,7 @@ public class XiangLiaoService {
 
     public void deleteById(Integer id) {
     	xiangliaoMapper.deleteByPrimaryKey(id);
-    	
-    	
-    	
-    	
+    		
     }
   public void deleteAll() {
     	

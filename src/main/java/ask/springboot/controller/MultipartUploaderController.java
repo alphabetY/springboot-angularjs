@@ -108,7 +108,7 @@ public class MultipartUploaderController {
         
         for(Iterator ite=sheet.rowIterator();ite.hasNext();)
         {     
-        	i++;
+        	 i++;
         	 XiangLiao xiangliao =new XiangLiao();
         	 
         	 xiangliao.setId(i);
