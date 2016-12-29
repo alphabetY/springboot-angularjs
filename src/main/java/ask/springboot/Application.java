@@ -55,17 +55,17 @@ public class Application extends SpringBootServletInitializer {
 	    protected SpringApplicationBuilder configure(
 	            SpringApplicationBuilder application) {
 	        return application.sources(Application.class);
+	      
 	    }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-  //  @RequestMapping("/")
+//  @RequestMapping("/")
 ///  String home() {
 //      return "redirect:countries";
 // }
-    
-    /*
+   /*
     @RequestMapping("/login")
   String login(HttpServletResponse resp,HttpServletRequest req) {
     	
@@ -96,13 +96,11 @@ public class Application extends SpringBootServletInitializer {
         cookie.setPath("/");//路径也要完全相同  
        // cookie.setDomain(".aaa.com");//域也要完全相同  
         cookie.setMaxAge(0);//设置时间为0,以直接删除Cookie  
-        resp.addCookie(cookie);  
-        
-        
+        resp.addCookie(cookie);          
         return "redirect:/";
     }
-
     */
+    
     @RequestMapping("demo")
     public String welcome(Map<String, Object> model) {
     	
