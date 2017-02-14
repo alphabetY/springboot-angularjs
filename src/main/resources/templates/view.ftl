@@ -8,7 +8,7 @@
     <input type="hidden" name="id" value="<#if xiangliao.id??>${xiangliao.id}</#if>"/>
     <table class="gridtable" style="width:800px;">
          <tr>
-            <th colspan="9> [ <a href=" ${request.contextPath}/xiangliao" >  修改  </a> [ <a href=" ${request.contextPath}/xiangliao" >  返回主页  </a> ]  </th>
+            <th colspan="11> [ <a href=" ${request.contextPath}/xiangliao" >  修改  </a> [ <a href=" ${request.contextPath}/xiangliao" >  返回主页  </a> ]  </th>
         </tr>
         <tr>
             <th> 序号：</th>
@@ -22,6 +22,9 @@
             </td>
              <th> 分子量：</th>
             <td><input type="text" name="fenziliang" value="${xiangliao.fenziliang}"/>
+            </td>
+            <th> 含量：</th>
+            <td><input type="text" name="hanliang" value="${xiangliao.hanliang}"/>
             </td>
             <td><input type="submit" value="保存"/></td>
         </tr>

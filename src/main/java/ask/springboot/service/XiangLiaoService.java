@@ -67,6 +67,8 @@ public class XiangLiaoService {
     	
     	String xiangyunleibie=request.getParameter("xiangyunleibie");
     	
+    	String fenzishi=request.getParameter("fenzishi");
+    	
     	Example example = new Example(XiangLiao.class);
         Example.Criteria criteria = example.createCriteria();
         
@@ -78,6 +80,9 @@ public class XiangLiaoService {
         }
         if (StringUtil.isNotEmpty(cas)) {
             criteria.andLike("cas", "%" + cas+ "%");
+        }
+        if (StringUtil.isNotEmpty(fenzishi)) {
+            criteria.andLike("fenzishi", "%" + fenzishi+ "%");
         }
         if (StringUtil.isNotEmpty(xiangyunleibie)) {
             criteria.andLike("xiangyunleibie", "%" + xiangyunleibie+ "%");

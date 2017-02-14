@@ -188,21 +188,22 @@ public class XiangLiaoController {
     
     @RequestMapping(value = "/tubiao")
     public ModelAndView tubiao1(XiangLiao xiangliao) {
-        ModelAndView result = new ModelAndView("tubiao");
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        return result;
+    	 List<XiangLiao> xiangliaoList = xiangliaoService.getAll();
+    	 Set<String> liss = new HashSet<String>(); 
+    	 for(XiangLiao xiangliao1 : xiangliaoList)
+         {
+         	liss.add(xiangliao1.getXiangyunleibie());
+         }
+    	 ModelAndView result;
+         if(liss.size()==14)
+         { result= new ModelAndView("tubiao");}
+         else
+         { result = new ModelAndView("tubiao12");}
+
+         
+         
+         return result;
     }
     @RequestMapping(value = "/tubiao1")
     @ResponseBody  
@@ -210,74 +211,150 @@ public class XiangLiaoController {
        
         
         List<XiangLiao> xiangliaoList = xiangliaoService.getAll();
-        
-       
-        
-        List<String> lis = new ArrayList<String>(); 
         List<String> lisresult = new ArrayList<String>(); 
-        
-       lis.add("（清）青香");
-       lis.add("豆香");
-       lis.add("膏香");
-       lis.add("果香");
        
-       lis.add("花香");
-       lis.add("坚果香");
-       lis.add("焦甜香");
-       lis.add("木香");
-       lis.add("奶香韵");
-       
-       lis.add("酸香");
-       lis.add("甜香");
-       lis.add("药香");
-       lis.add("辛香");
-       lis.add("脂蜡香");
-        
-       System.out.println(lis);
-        
-        
-        for(String str : lis)
-        { 	
-            double sum=0.0;
-            
-           for(XiangLiao xiangliao1 : xiangliaoList)
-           {
-               
-        	 if(xiangliao1.getXiangyunleibie().equals(str))
-        	 {
-		        
-        		 String a1=xiangliao1.getZuoyongyuzhi();
-        		
-        		
-        		 
-        		String  a12=a1.substring(0, a1.indexOf("*"));
-            	System.out.println("a12="+a12);	
-            	
-            	String  a11=a1.substring(a1.indexOf("-")+1, a1.length());
-        		System.out.println("a11="+a11);	
-        	 		
-        	      String a2=xiangliao1.getFenziliang();		
-        	 		
-        	 		
-        	 	double sum1=	Double.valueOf(a12)*Math.pow(10,(-1)*Double.valueOf(a11));
-        		System.out.println("Math.pow(10,(-1)*Double.valueOf(a11)="+Math.pow(10,(-1)*Double.valueOf(a11)));	
-        	 	System.out.println("sum1="+sum1);	
-        		
-        	 	double sum2=	Double.valueOf(a2);
-        	 	System.out.println("sum2="+sum2);	
-        	 	
-        		sum=sum+sum2/sum1;
- 
-        	 	
-        	 }
-        	
-   
-        	
-           }
-           double summ = Math.log10(sum);
-           lisresult.add(String.valueOf(summ));
+        Set<String> liss = new HashSet<String>(); 
+        for(XiangLiao xiangliao1 : xiangliaoList)
+        {
+        	liss.add(xiangliao1.getXiangyunleibie());
         }
-       
+        
+        if(liss.size()==14)
+        { List<String> lis = new ArrayList<String>(); 
+        lis.add("烤甜香");
+        lis.add(" 烘焙香");
+        lis.add(" 清(青)香");
+        lis.add("果香");
+        
+        lis.add("辛香");
+        lis.add("木香");
+        lis.add("花香");
+        lis.add("药草香");
+        lis.add("豆香");
+        
+        lis.add("奶香");
+        lis.add("膏香");
+        lis.add("脂蜡");
+        lis.add("酸香");
+        lis.add("甜香");
+         
+        System.out.println(lis);
+         
+         
+         for(String str : lis)
+         { 	
+             double sum=0.0;
+             
+            for(XiangLiao xiangliao1 : xiangliaoList)
+            {
+                
+         	 if(xiangliao1.getXiangyunleibie().equals(str))
+         	 {
+ 		        
+         		 String a1=xiangliao1.getZuoyongyuzhi();
+         		double sum1=0;
+         		if(a1.contains("*"))
+         		{
+         		String  a12=a1.substring(0, a1.indexOf("*"));
+             	System.out.println("a12="+a12);	
+             	
+             	String  a11=a1.substring(a1.indexOf("-")+1, a1.length());
+         		System.out.println("a11="+a11);	
+ 
+         		
+         	 	 sum1=	Double.valueOf(a12)*Math.pow(10,(-1)*Double.valueOf(a11));
+         		System.out.println("Math.pow(10,(-1)*Double.valueOf(a11)="+Math.pow(10,(-1)*Double.valueOf(a11)));	
+         	 	System.out.println("sum1="+sum1);	
+         		}else
+         		{
+         			sum1=Double.valueOf(sum1);
+         		}
+         	 	
+         		
+         	 	 String a2=xiangliao1.getHanliang();	
+         	 	double sum2=	Double.valueOf(a2)*1000;
+         	 	System.out.println("sum2="+sum2);	
+         	 	
+         		sum=sum+sum2/sum1;
+  
+         	 	
+         	 }
+         	
+    
+         	
+            }
+            double summ = Math.log10(sum);
+            lisresult.add(String.valueOf(summ));
+         }}
+        else
+        {
+        	
+        	List<String> lis = new ArrayList<String>(); 
+            lis.add("烤甜香");
+            lis.add(" 烘焙香");
+            lis.add(" 清(青)香");
+            lis.add("果香");
+            
+           
+            lis.add("花香");
+            lis.add("药草香");
+            lis.add("豆香");
+            
+            lis.add("奶香");
+            lis.add("膏香");
+            lis.add("脂蜡");
+            lis.add("酸香");
+            lis.add("甜香");
+             
+            System.out.println(lis);
+             
+             
+             for(String str : lis)
+             { 	
+            	 double sum=0.0;
+                 
+                 for(XiangLiao xiangliao1 : xiangliaoList)
+                 {
+                     
+              	 if(xiangliao1.getXiangyunleibie().equals(str))
+              	 {
+      		        
+              		String a1=xiangliao1.getZuoyongyuzhi();
+              		double sum1=0;
+              		if(a1.contains("*"))
+              		{
+              		String  a12=a1.substring(0, a1.indexOf("*"));
+                  	System.out.println("a12="+a12);	
+                  	
+                  	String  a11=a1.substring(a1.indexOf("-")+1, a1.length());
+              		System.out.println("a11="+a11);	
+      
+              		
+              	 	 sum1=	Double.valueOf(a12)*Math.pow(10,(-1)*Double.valueOf(a11));
+              		System.out.println("Math.pow(10,(-1)*Double.valueOf(a11)="+Math.pow(10,(-1)*Double.valueOf(a11)));	
+              	 	System.out.println("sum1="+sum1);	
+              		}else
+              		{
+              			sum1=Double.valueOf(sum1);
+              		}
+              	 	
+              		 String a2=xiangliao1.getHanliang();	
+             	 	double sum2=	Double.valueOf(a2)*1000;
+             	 	System.out.println("sum2="+sum2);	
+             	 	
+             		sum=sum+sum2/sum1;
+         	 }
+
+                }
+                double summ = Math.log10(sum);
+                lisresult.add(String.valueOf(summ));
+             }
+            
+        	
+        	
+        }
+
+        
         
        
         System.out.println("lisresult="+lisresult);

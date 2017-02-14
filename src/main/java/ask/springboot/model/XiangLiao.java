@@ -16,7 +16,11 @@ public class XiangLiao extends BaseEntity {
 	
 	private String jiegoushi;
 	
-	private Object tupian;
+	private String hanliang;
+	
+	
+	
+	
 	
 	public  Integer getXuhao() {
 		return xuhao;
@@ -78,12 +82,18 @@ public class XiangLiao extends BaseEntity {
 	public void setJiegoushi(String jiegoushi) {
 		this.jiegoushi = jiegoushi;
 	}
-	public Object getTupian() {
-		return tupian;
+	
+	
+	public String getHanliang() {
+		return hanliang;
 	}
-	public void setTupian(Object tupian) {
-		this.tupian = tupian;
+	public void setHanliang(String hanliang) {
+		this.hanliang = hanliang;
 	}
+	
+	
+	
+	
 	
 	
 	

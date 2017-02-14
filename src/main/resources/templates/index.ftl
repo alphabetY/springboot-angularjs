@@ -96,16 +96,24 @@
                 <tr>
                     <th> 化合物名稱：</th>
                     <td><input type="text" name="huahewumingcheng" </td>
-                     <!--      
-                    <th> cas：</th>
-                    <td><input type="text" name="cas"</td>
-                      -->          
+                          
+                   
+                             
                     <th> 香韵类别：</th>
                     <td><input type="text" name="xiangyunleibie"</td>
                              
-                    <td rowspan="2"><input type="submit" value="查询"/></td>
+                    <td rowspan="3"><input type="submit" value="查询"/></td>
                 </tr>
+               
+                
                 <tr>
+                 <th> cas：</th>
+                    <td><input type="text" name="cas"</td>
+                      
+                      <th> 分子式：</th>
+                    <td><input type="text" name="cas"</td>
+                </tr>
+                 <tr>
                     <th>页码：</th>
                     <td><input type="text" name="page" value="${page!0}"/></td>
                     <th>页面大小：</th>
@@ -208,51 +216,35 @@
          <h1 style="padding: 50px 0 20px;"> 数据内容操作
          </h1>
          
-       <form method="post" action="${request.contextPath}/xiangliao/deletesome/" >
-      
-        <center>
-       
-         <button> <a href="${request.contextPath}/xiangliao/delete/" style="display:none">删除全部</a>  </button>
-         
-         <input type="submit" value="删除部分" style="display:none" />
-        
-         <button> <a href="${request.contextPath}/xiangliao/view/" style="display:none">插入</a>  </button>
      
-        </center>
         <table class="gridtable" border="10" style="width:100%;">
           
             <tr>
-                <th style="display:none"> 复选框</th>
+             
                 <th> 序号名</th>
                 <th>  化合物名称  </th>
                  <th>    CAS号</th>
                  <th>   英文名称 </th>
                  <th>    分子式</th>
+                  <th>    结构式</th>
+                   <th>    分子量</th>
                  <th>    香韵类别</th>
                  <th>    阈值范围</th>
                  <th>    作用阈值</th>
-                 <th>    分子量</th>
-                 <th>    结构式</th>
+                <th>    含量</th>
+                
                  <th>操作</th>
             </tr>
            
             <tbody>
                 <#list pageInfo.list as xiangliao>
                 <tr>
-                    <td style="display:none">
                     
-                    <#if xiangliao.id??><input type="checkbox" name="checkbox" value="${xiangliao.id}" /></#if>
-                    
-                    </td>
                     <td ><#if xiangliao.xuhao??>${xiangliao.xuhao}</#if></td>
                     <td><#if xiangliao.huahewumingcheng??>${xiangliao.huahewumingcheng}</#if></td>
                     <td><#if xiangliao.cas??>${xiangliao.cas}</#if></td>
                     <td><#if xiangliao.yingwenmingcheng??>${xiangliao.yingwenmingcheng}</#if></td>
                     <td><#if xiangliao.fenzishi??>${xiangliao.fenzishi}</#if></td>
-                    <td><#if xiangliao.xiangyunleibie??>${xiangliao.xiangyunleibie}</#if></td>
-                    <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
-                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
-                    <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
                     <td> 
                      <#if xiangliao.jiegoushi??> <img src="/files/${xiangliao.jiegoushi}"   height="50" width="50" >
                      </#if>
@@ -262,6 +254,13 @@
                           <input type="submit" name="submit" value="提交"  height="50" width="50">
                         </form>
                      </td>
+                     <td><#if xiangliao.fenziliang??>${xiangliao.fenziliang}</#if></td>
+                    <td><#if xiangliao.xiangyunleibie??>${xiangliao.xiangyunleibie}</#if></td>
+                    <td><#if xiangliao.yuzhifanwei??>${xiangliao.yuzhifanwei}</#if></td>
+                    <td><#if xiangliao.zuoyongyuzhi??>${xiangliao.zuoyongyuzhi}</#if></td>
+                    <td><#if xiangliao.hanliang??>${xiangliao.hanliang}</#if></td>
+                   
+                    
                        <td style="text-align:center;">
                        
                         [<a href="${request.contextPath}/xiangliao/view/${xiangliao.id}">修改</a>] -
@@ -277,7 +276,7 @@
         
      
          
-         </from>
+        
         
         <table class="gridtable" style="width:100%;text-align: center;">
             <tr>

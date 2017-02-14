@@ -49,13 +49,13 @@ import javax.servlet.http.HttpSession;
 //12.12
 
 public class Application extends SpringBootServletInitializer {
-	//final  String LOGGED_IN = "logged_in";
-	
+	//final  String LOGGED_IN = "logged_in";	
 	  @Override
-	    protected SpringApplicationBuilder configure(
+	         protected SpringApplicationBuilder configure(
 	            SpringApplicationBuilder application) {
-	        return application.sources(Application.class);
-	      
+		  
+	         return application.sources(Application.class);
+	        
 	    }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -103,8 +103,6 @@ public class Application extends SpringBootServletInitializer {
     
     @RequestMapping("demo")
     public String welcome(Map<String, Object> model) {
-    	
-
     	 model.put("time", new Date());
     	 return "login";
     	

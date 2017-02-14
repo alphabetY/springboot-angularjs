@@ -46,8 +46,8 @@
 
                 option = {
                     title : {
-                        text: '假数据',
-                        subtext: '假数据'
+                        text: '数据展示',
+                        
                     },
                     tooltip : {
                         trigger: 'axis'
@@ -70,21 +70,21 @@
                     polar : [
                        {
                            indicator : [
-                               { text: '（清）青香', max: 20},
-                               { text: '豆香', max: 20},
-                               { text: '膏香', max: 20},
+                               { text: '烤甜香', max: 20},
+                               { text: '烘焙香', max: 20},
+                               { text: '清(青)香', max: 20},
                                { text: '果香', max: 20},
-                               { text: '花香', max: 20},
-                               { text: '坚果香', max: 20},
-                               { text: '焦甜香', max: 20},
+                               { text: '辛香', max: 20},
                                { text: '木香', max: 20},
-                               { text: '奶香韵', max: 20},
+                               { text: '花香', max: 20},
+                             
+                               { text: '药草香', max: 20},
+                               { text: '豆香', max: 20},
+                               { text: '奶香', max: 20},
+                               { text: '膏香', max: 20},
+                               { text: '脂蜡', max: 20},
                                { text: '酸香', max: 20},
                                { text: '甜香', max: 20},
-                               { text: '辛香', max: 20},
-                               { text: '药香', max: 20},
-                               { text: '脂蜡香', max: 20},
-                               
                                
                             ]
                         }

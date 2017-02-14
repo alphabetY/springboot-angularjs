@@ -137,33 +137,73 @@ public class MultipartUploaderController {
             {xiangliao.setCAS(String.valueOf(cell2.getNumericCellValue()));}
             
             HSSFCell cell3=(HSSFCell)itet.next(); 
-            xiangliao.setYingwenmingchen(cell3.getRichStringCellValue().toString());
+           // xiangliao.setYingwenmingchen(cell3.getRichStringCellValue().toString());
+            
+            if(cell3.getCellType()==HSSFCell.CELL_TYPE_STRING)
+            { xiangliao.setYingwenmingchen(String.valueOf(cell3.getRichStringCellValue().toString()));}
+            else if(cell3.getCellType()==HSSFCell.CELL_TYPE_NUMERIC)
+            {xiangliao.setYingwenmingchen(String.valueOf(cell3.getNumericCellValue()));}
+            
             
             
             HSSFCell cell4=(HSSFCell)itet.next(); 
             xiangliao.setFenzishi(cell4.getRichStringCellValue().toString());
             
-            
             HSSFCell cell5=(HSSFCell)itet.next(); 
-            xiangliao.setXiangyunleibie(cell5.getRichStringCellValue().toString());
+            xiangliao.setJiegoushi(cell5.getRichStringCellValue().toString());
+            System.out.println(cell5.getRichStringCellValue().toString());
             
             
             HSSFCell cell6=(HSSFCell)itet.next(); 
-            xiangliao.setYuzhifanwei(cell6.getRichStringCellValue().toString());
+            xiangliao.setFenziliang(String.valueOf(cell6.getNumericCellValue()));
             
             
             HSSFCell cell7=(HSSFCell)itet.next(); 
-            xiangliao.setZuoyongyuzhi(cell7.getRichStringCellValue().toString());
+            xiangliao.setXiangyunleibie(cell7.getRichStringCellValue().toString());
+            System.out.println(cell7.getRichStringCellValue().toString());
+            
             
             HSSFCell cell8=(HSSFCell)itet.next(); 
-            xiangliao.setFenziliang(String.valueOf(cell8.getNumericCellValue()));
-        
-
-                 xiangliaoService.save(xiangliao);
+            //xiangliao.setYuzhifanwei(cell8.getRichStringCellValue().toString());
+            
+            if(cell8.getCellType()==HSSFCell.CELL_TYPE_STRING)
+            { xiangliao.setYuzhifanwei(String.valueOf(cell8.getRichStringCellValue().toString()));}
+            else if(cell8.getCellType()==HSSFCell.CELL_TYPE_NUMERIC)
+            {xiangliao.setYuzhifanwei(String.valueOf(cell8.getNumericCellValue()));}
+            
+           
+            
+            
+            HSSFCell cell9=(HSSFCell)itet.next(); 
+            //xiangliao.setZuoyongyuzhi(cell9.getRichStringCellValue().toString());
+            
+            if(cell9.getCellType()==HSSFCell.CELL_TYPE_STRING)
+            { xiangliao.setZuoyongyuzhi(String.valueOf(cell9.getRichStringCellValue().toString()));}
+            else if(cell9.getCellType()==HSSFCell.CELL_TYPE_NUMERIC)
+            {xiangliao.setZuoyongyuzhi(String.valueOf(cell9.getNumericCellValue()));}
+            
+           
+            
+            
+            HSSFCell cell10=(HSSFCell)itet.next(); 
+            
+            xiangliao.setHanliang(String.valueOf(cell10.getNumericCellValue()));
+       
+           // if(cell10.getCellType()==HSSFCell.CELL_TYPE_STRING)
+           // { xiangliao.setHanLiang(String.valueOf(cell10.getRichStringCellValue().toString()));}
+           // else if(cell10.getCellType()==HSSFCell.CELL_TYPE_NUMERIC)
+           // {xiangliao.setHanLiang(String.valueOf(cell10.getNumericCellValue()));}
+            
+            xiangliaoService.save(xiangliao);
+                
                }
+           
+        
+        
         }
             
         }
+        
         ModelAndView result = new ModelAndView("redirect:/xiangliao");
         ra.addFlashAttribute("msg", "上传成功!");
         return result; 
